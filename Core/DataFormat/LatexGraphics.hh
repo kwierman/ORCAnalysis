@@ -1,7 +1,7 @@
-#ifndef Deuterium_DataFormat_LatexGraphics_hh_
-#define Deuterium_DataFormat_LatexGraphics_hh_
+#ifndef ORCA_DataFormat_LatexGraphics_hh_
+#define ORCA_DataFormat_LatexGraphics_hh_
 
-namespace Deuterium{
+namespace ORCA{
 	namespace DataFormat{
 
 

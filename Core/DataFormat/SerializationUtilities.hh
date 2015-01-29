@@ -1,9 +1,9 @@
-#ifndef Deuterium_SerializationUtilities_hh_
-#define Deuterium_SerializationUtilities_hh_
+#ifndef ORCA_SerializationUtilities_hh_
+#define ORCA_SerializationUtilities_hh_
 
 #include <string>
 
-namespace Deuterium{
+namespace ORCA{
 	namespace DataFormat{
 
 

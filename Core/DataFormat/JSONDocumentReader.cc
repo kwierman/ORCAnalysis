@@ -1,7 +1,7 @@
-#include "Deuterium/DataFormat/JSONDocumentBuilder.hh"
+#include "ORCA/DataFormat/JSONDocumentBuilder.hh"
 
 
-namespace Deuterium{
+namespace ORCA{
 
 	namespace DataFormat{
 		JSONVisitor::JSONVisitor(JSONDocumentReader* parent) : fParent(parent) {}			

@@ -1,7 +1,7 @@
-#ifndef Deuterium_DataFormat_DataTable_hh_
-#define Deuterium_DataFormat_DataTable_hh_
+#ifndef ORCA_DataFormat_DataTable_hh_
+#define ORCA_DataFormat_DataTable_hh_
 
-namespace Deuterium{
+namespace ORCA{
 	namespace DataFormat{
 
 		/** A class for containing the entry in the table, it needs to point to the Column and 

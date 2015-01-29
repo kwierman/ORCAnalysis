@@ -1,5 +1,5 @@
 #include "File.h"
-#include "DeuteriumFormat.h"
+#include "ORCAFormat.h"
 
 #include <iostream>
 #include <fstream>
@@ -11,17 +11,17 @@
 
 
 
-/*
-Deuterium::File::File(std::string& filepath){
+
+ORCA::File::File(std::string& filepath){
 	fInput = new std::ifstream(filepath.c_str());
 }
 
-Deuterium::File::~File(){
+ORCA::File::~File(){
 	delete fInput;
     delete fHeader;
 }
 
-bool Deuterium::File::Read(void* buffer, size_t size)
+bool ORCA::File::Read(void* buffer, size_t size)
 {
     if (! (fInput && *fInput))
         return false;
@@ -45,7 +45,7 @@ bool Deuterium::File::Read(void* buffer, size_t size)
 }
 
 
-void Deuterium::File::Initialize(){
+void ORCA::File::Initialize(){
 	unsigned int headerLen, headerSize;
 	bool isBigEndian;
 	isBigEndian = this->Read(&headerLen, sizeof(unsigned int) );
@@ -76,7 +76,7 @@ void Deuterium::File::Initialize(){
 }
 
 //Each set of data should contain an id (with length), a crate a card and the rest of the data stored as a vector
-bool Deuterium::File::GetNextData(unsigned int& dataId, std::vector<unsigned>& data){
+bool ORCA::File::GetNextData(unsigned int& dataId, std::vector<unsigned>& data){
     data.clear();
 
     //process the first word
@@ -104,5 +104,3 @@ bool Deuterium::File::GetNextData(unsigned int& dataId, std::vector<unsigned>& d
     }
     return true;
 }
-
-*/

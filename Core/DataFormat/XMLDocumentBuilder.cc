@@ -1,6 +1,6 @@
-#include "Deuterium/DataFormat/XMLDocumentBuilder.hh"
+#include "ORCA/DataFormat/XMLDocumentBuilder.hh"
 
-namespace Deuterium{
+namespace ORCA{
 	namespace DataFormat{
 		XMLVisitor::XMLVisitor(XMLDocumentReader* root) : fRoot(root) {}		
 

@@ -1,11 +1,11 @@
-#ifndef Deuterium_JSONDocumentBuilder_hh_
-#define Deuterium_JSONDocumentBuilder_hh_
+#ifndef ORCA_JSONDocumentBuilder_hh_
+#define ORCA_JSONDocumentBuilder_hh_
 
-#include "Deuterium/DataFormat/JSONNode.hh"
-#include "Deuterium/DataFormat/DataReader.hh"
-#include "Deuterium/DataFormat/DataNode.hh"
+#include "ORCA/DataFormat/JSONNode.hh"
+#include "ORCA/DataFormat/DataReader.hh"
+#include "ORCA/DataFormat/DataNode.hh"
 
-namespace Deuterium{
+namespace ORCA{
 
 	namespace DataFormat{
 

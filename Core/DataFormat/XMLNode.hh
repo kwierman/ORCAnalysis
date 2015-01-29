@@ -1,9 +1,9 @@
-#ifndef Deuterium_XMLNode_hh_
-#define Deuterium_XMLNode_hh_
+#ifndef ORCA_XMLNode_hh_
+#define ORCA_XMLNode_hh_
 
-#include "Deuterium/DataFormat/DataNode.hh"
+#include "ORCA/DataFormat/DataNode.hh"
 
-namespace Deuterium{
+namespace ORCA{
 
 	namespace DataFormat{
 

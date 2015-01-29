@@ -1,12 +1,12 @@
-#ifndef Deuterium_DataReader_hh_
-#define Deuterium_DataReader_hh_
+#ifndef ORCA_DataReader_hh_
+#define ORCA_DataReader_hh_
 
-#include "Protium/Allocation/SmallObject.hh"
+#include "ORCA/Allocation/SmallObject.hh"
 
 #include <iostream>
 
 
-namespace Deuterium{
+namespace ORCA{
 	namespace DataFormat{
 
 
@@ -14,7 +14,7 @@ namespace Deuterium{
 		class CharacterVisitor;
 
 		//Derive this for
-		class CharacterProcessor : public Protium::Allocation::DefaultSmallObject {
+		class CharacterProcessor : public ORCA::Allocation::DefaultSmallObject {
 			const char fCharacter;
 
 			//this is not an owned pointer
@@ -223,4 +223,4 @@ namespace Deuterium{
 }
 
 
-#endif//Deuterium_DataReader_hh_
+#endif//ORCA_DataReader_hh_

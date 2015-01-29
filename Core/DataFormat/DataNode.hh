@@ -1,27 +1,27 @@
-#ifndef Deuterium_DataNode_hh_
-#define Deuterium_DataNode_hh_
+#ifndef ORCA_DataNode_hh_
+#define ORCA_DataNode_hh_
 
-#include "Protium/Allocation/SmallObject.hh"
-#include "Protium/Allocation/STLAdapter.hh"
+#include "ORCA/Allocation/SmallObject.hh"
+#include "ORCA/Allocation/STLAdapter.hh"
 
 #include <string>
 #include <vector>
 
 
-namespace Deuterium{
+namespace ORCA{
 	namespace DataFormat{
 
 		/*! \class DataNode 
 			\brief Abstract for node tree structure
 		*/
-		class DataNode : public Protium::Allocation::DefaultSmallObject {
+		class DataNode : public ORCA::Allocation::DefaultSmallObject {
 			//! Child Nodes
 			std::string fName;
-			std::vector<DataNode, Protium::Allocation::STLAdapter<DataNode> > m_children;
+			std::vector<DataNode, ORCA::Allocation::STLAdapter<DataNode> > m_children;
 			const mutable DataNode* fParent;
 
 		public:
-			typedef std::vector<DataNode, Protium::Allocation::STLAdapter<DataNode> >::iterator NodeIterator;
+			typedef std::vector<DataNode, ORCA::Allocation::STLAdapter<DataNode> >::iterator NodeIterator;
 			DataNode(const std::string& name="" );
 			//DataNode(const char* name = "") : fName(name){}
 			virtual ~DataNode();

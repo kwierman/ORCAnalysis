@@ -1,12 +1,12 @@
-#ifndef Protium_Histogram_hh_
-#define Protium_Histogram_hh_
+#ifndef ORCA_Histogram_hh_
+#define ORCA_Histogram_hh_
 
-#include "Protium/Containers/Functional.hh"
-#include "Protium/Allocation/SmallObject.hh"
+#include "ORCA/Containers/Functional.hh"
+#include "ORCA/Allocation/SmallObject.hh"
 
 #include <map>
 
-namespace Protium{
+namespace ORCA{
 
 	namespace Containers{
 
@@ -16,7 +16,7 @@ namespace Protium{
 			\warning This may move to the interior of Histograms
 		**/
 		template<typename BinType>
-		struct Bin : Protium::Allocation::DefaultSmallObject {
+		struct Bin : ORCA::Allocation::DefaultSmallObject {
 			BinType loweredge;
 			BinType width;
 
@@ -190,4 +190,4 @@ namespace Protium{
 }
 
 
-#endif //Protium_Histogram_h_
+#endif //ORCA_Histogram_h_

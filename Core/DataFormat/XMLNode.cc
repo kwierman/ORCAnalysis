@@ -1,7 +1,7 @@
-#include "Deuterium/DataFormat/XMLNode.hh"
+#include "ORCA/DataFormat/XMLNode.hh"
 
 
-namespace Deuterium{
+namespace ORCA{
 	namespace DataFormat{
 
 		XMLAttributeNode::XMLAttributeNode(const std::string& name, const std::string& value) : DataNode("attribute"){

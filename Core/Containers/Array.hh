@@ -1,7 +1,7 @@
-#ifndef Protium_Array_hh
-#define Protium_Array_hh
+#ifndef ORCA_Array_hh
+#define ORCA_Array_hh
 
-namespace Protium{
+namespace ORCA{
     namespace Containers{
         template<class T, std::size_t N>
         class Array{
@@ -76,7 +76,7 @@ namespace Protium{
             
             const_reference operator[](size_type i) const 
             {     
-                PROTIUM_ASSERT( i < N && "out of range" ); 
+                ORCA_ASSERT( i < N && "out of range" ); 
                 return elems[i]; 
             }
             reference at(size_type i) { rangecheck(i); return elems[i]; }

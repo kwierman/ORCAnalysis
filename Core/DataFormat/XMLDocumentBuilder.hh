@@ -1,19 +1,19 @@
-#ifndef Deuterium_XMLDocumentBuilder_hh_
-#define Deuterium_XMLDocumentBuilder_hh_
+#ifndef ORCA_XMLDocumentBuilder_hh_
+#define ORCA_XMLDocumentBuilder_hh_
 
-#include "Deuterium/DataFormat/XMLNode.hh"
-#include "Deuterium/DataFormat/DataReader.hh"
-#include "Deuterium/DataFormat/DataNode.hh"
+#include "ORCA/DataFormat/XMLNode.hh"
+#include "ORCA/DataFormat/DataReader.hh"
+#include "ORCA/DataFormat/DataNode.hh"
 
 
-#include "Protium/Allocation/SmallObject.hh"
+#include "ORCA/Allocation/SmallObject.hh"
 
 #include <iostream> //for debug
 #include <ctype.h> //for isspace
 
 
 
-namespace Deuterium{
+namespace ORCA{
 	namespace DataFormat{
 		class XMLDocumentReader;
 

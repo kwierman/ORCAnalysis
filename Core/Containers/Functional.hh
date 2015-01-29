@@ -1,9 +1,9 @@
-#ifndef Protium_Functional_hh_
-#define Protium_Functional_hh_
+#ifndef ORCA_Functional_hh_
+#define ORCA_Functional_hh_
 
 #include <map>
 
-namespace Protium{
+namespace ORCA{
 
 	namespace Containers{
 

@@ -1,9 +1,9 @@
-#ifndef Deuterium_JSONNode_hh_
-#define Deuterium_JSONNode_hh_
+#ifndef ORCA_JSONNode_hh_
+#define ORCA_JSONNode_hh_
 
-#include "Deuterium/DataFormat/DataNode.hh"
+#include "ORCA/DataFormat/DataNode.hh"
 
-namespace Deuterium{
+namespace ORCA{
 	namespace DataFormat{
 
 		struct JSONNode : public DataNode{
