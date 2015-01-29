@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<root name="this is a root element" value="this is a value attribute">
+	<firstchild name="This is a child element" value="this is the first child element" />
+	<secondchild name="This is a child element" value="this is the second child element" />
+	<thirdchild name="This is a child element" value="this is the second child element" >
+		<firstchild name="This is a child element" value="this is the first child element" />
+		<secondchild name="This is a child element" value="this is the second child element">
+			<firstchild name="This is a child element" value="this is the first child element" >
+				first data element
+				second data element
+				third data element
+			</firstchild>
+			<secondchild name="This is a child element" value="this is the second child element" />
+			<thirdchild name="This is a child element" value="this is the second child element" />
+		</secondchild>
+		<thirdchild name="This is a child element" value="this is the second child element" />
+	</thirdchild>
+</root>
