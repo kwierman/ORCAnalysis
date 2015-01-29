@@ -1,9 +1,9 @@
-#ifndef Protium_SmartPointer_StoragePolicies_hh_
-#define Protium_SmartPointer_StoragePolicies_hh_
+#ifndef ORCA_SmartPointer_StoragePolicies_hh_
+#define ORCA_SmartPointer_StoragePolicies_hh_
 
-#include "Protium/Threads/Locker.hh"
+#include "ORCA/Threads/Locker.hh"
 
-namespace Protium{
+namespace ORCA{
     namespace SmartPointer{
 
     template <class T>
@@ -161,7 +161,7 @@ namespace Protium{
 
         typedef T* StoredType;           /// the type of the pointee_ object
         typedef T* InitPointerType;      /// type used to declare OwnershipPolicy type.
-        typedef Protium::Threads::Locker< T > PointerType; /// type returned by operator->
+        typedef ORCA::Threads::Locker< T > PointerType; /// type returned by operator->
         typedef T& ReferenceType;        /// type returned by operator*
 
         LockedStorage() : pointee_( Default() ) {}
@@ -174,7 +174,7 @@ namespace Protium{
 
         PointerType operator->()
         {
-            return Protium::Threads::Locker< T >( pointee_ );
+            return ORCA::Threads::Locker< T >( pointee_ );
         }
 
         void Swap(LockedStorage& rhs)

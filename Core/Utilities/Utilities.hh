@@ -1,10 +1,10 @@
-#ifndef Protium_Utilities_Utilities_hh
-#define Protium_Utilities_Utilities_hh
+#ifndef ORCA_Utilities_Utilities_hh
+#define ORCA_Utilities_Utilities_hh
 
-#include "Protium/Utilities/Endian.hh"
-#include "Protium/Utilities/SignalCatching.hh"
+#include "ORCA/Utilities/Endian.hh"
+#include "ORCA/Utilities/SignalCatching.hh"
 
-namespace Protium{
+namespace ORCA{
 
 	//! Holds miscellanious utilites
 	namespace Utilities{}

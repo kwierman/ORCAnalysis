@@ -1,9 +1,9 @@
-#ifndef Protium_Random_hh_
-#define Protium_Random_hh_
+#ifndef ORCA_Random_hh_
+#define ORCA_Random_hh_
 
 
 
-namespace Protium{
+namespace ORCA{
     namespace Math{
         /**
          *  \class Random
@@ -12,7 +12,7 @@ namespace Protium{
          *
          *  Multiply-with-carry was invented by George Marsaglia. This utilizes a similar method
          *  wherein the resultant is taken as the last 16-bits, but the full result is propagated 
-         *  to the seed.
+         *  to the next seed.
         **/
         class Random{
             unsigned fSeed;

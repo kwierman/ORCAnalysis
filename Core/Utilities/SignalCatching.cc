@@ -1,4 +1,4 @@
-#include "Protium/Utilities/SignalCatching.hh"
+#include "ORCA/Utilities/SignalCatching.hh"
 
 #include <iostream>
 #include <stdio.h>
@@ -9,15 +9,15 @@
 #include <malloc.h>
 
 //---------------------------------------------------------------------
-void Protium::Private::signal_callback_handler(int signum){
-    Protium::Utilities::SignalCatcher::Instance().Handle(signum);
-	Protium:Private::print_stacktrace();
+void ORCA::Private::signal_callback_handler(int signum){
+    ORCA::Utilities::SignalCatcher::Instance().Handle(signum);
+	ORCA:Private::print_stacktrace();
 	exit(-1);
 }
 //---------------------------------------------------------------------
 
 //---------------------------------------------------------------------
-static inline void Protium::Private::print_stacktrace(unsigned int stack_depth)
+static inline void ORCA::Private::print_stacktrace(unsigned int stack_depth)
 {
 
 	std::cout<<"Stack Trace:"<<std::endl;;
@@ -85,7 +85,7 @@ static inline void Protium::Private::print_stacktrace(unsigned int stack_depth)
     free(trace_symbols);
 }
 //---------------------------------------------------------------------
-namespace Protium{
+namespace ORCA{
 	namespace Utilities{
 		//SignalCatcher::Instance().Setup();
 	}

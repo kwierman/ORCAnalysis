@@ -1,9 +1,9 @@
-#include "Protium/Threads/Thread.hh"
+#include "ORCA/Threads/Thread.hh"
 
-void* Protium::Threads::Private::threadingFunction(void* thread){
+void* ORCA::Threads::Private::threadingFunction(void* thread){
 	Thread* t = static_cast<Thread*>(thread);
 	t->start();
 	return NULL;
 }
 
-Protium::Threads::RootThread* Protium::Threads::RootThread::fRoot = NULL;
+ORCA::Threads::RootThread* ORCA::Threads::RootThread::fRoot = NULL;

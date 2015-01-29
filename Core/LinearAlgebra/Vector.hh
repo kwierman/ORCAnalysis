@@ -1,13 +1,13 @@
-#ifndef Protium_Vector_hh_
-#define Protium_Vector_hh_
+#ifndef ORCA_Vector_hh_
+#define ORCA_Vector_hh_
 
-#include "Protium/Allocation/SmallObject.hh"
-#include "Protium/Design/Assert.hh"
+#include "ORCA/Allocation/SmallObject.hh"
+#include "ORCA/Design/Assert.hh"
 
 #include <vector>
 #include <cmath>
 
-namespace Protium{
+namespace ORCA{
 
 	namespace LinearAlgebra{
 
@@ -46,12 +46,12 @@ namespace Protium{
 		template<typename T>
 		struct SubVector<T,1>{
 			Vector<T, 0> Of(const Vector<T,1>& other, const int& i=0){
-				PROTIUM_STATIC_ASSERT(false, ERROR_NO_SUBVECTOR_OF_LENGTH_0() );
+				ORCA_STATIC_ASSERT(false, ERROR_NO_SUBVECTOR_OF_LENGTH_0() );
 			}
 		};
 
 		template <typename T, int n=3>
-		class Vector : public Protium::Allocation::DefaultSmallObject {
+		class Vector : public ORCA::Allocation::DefaultSmallObject {
 
 			//! Holds the components of the vector
 			std::vector<T> fComponents;
@@ -68,7 +68,7 @@ namespace Protium{
 
 			//! Initialization of vector components to 
 			void Init(){
-				PROTIUM_STATIC_ASSERT(n>0, ERROR_NO_SUBVECTOR_OF_LENGTH_0 );
+				ORCA_STATIC_ASSERT(n>0, ERROR_NO_SUBVECTOR_OF_LENGTH_0 );
 				fComponents.clear();
 				for(int i=0; i<n;i++)fComponents.push_back( T(1) );
 			}
@@ -76,7 +76,7 @@ namespace Protium{
 			/** Default Constructor.
 				\param amplitude the amplitude of the vector
 			**/
-			Vector<T,n>(const T& amplitude=1) : Protium::Allocation::DefaultSmallObject() {
+			Vector<T,n>(const T& amplitude=1) : ORCA::Allocation::DefaultSmallObject() {
 				
 				Init();
 
@@ -86,7 +86,7 @@ namespace Protium{
 			/** Construct from an array. Copies contents.
 				\param input An array of size n and type T
 			**/
-			Vector<T,n>(const T* input) : Protium::Allocation::DefaultSmallObject(){
+			Vector<T,n>(const T* input) : ORCA::Allocation::DefaultSmallObject(){
 				Init();
 				for(int i=0; i<n; i++)
 					fComponents[i] = T(input[i]);
@@ -94,7 +94,7 @@ namespace Protium{
 
 			/** Construct from STL Vector
 			**/
-			Vector<T,n>(const std::vector<T>& vec) : Protium::Allocation::DefaultSmallObject(){
+			Vector<T,n>(const std::vector<T>& vec) : ORCA::Allocation::DefaultSmallObject(){
 				Init();
 				for(int i=0; i<n;i++)
 					fComponents[i] = T(vec[i] );
@@ -102,7 +102,7 @@ namespace Protium{
 
 			/** Copy constructor.
 			**/
-			Vector<T,n>(const Vector<T,n>& other) : Protium::Allocation::DefaultSmallObject(){
+			Vector<T,n>(const Vector<T,n>& other) : ORCA::Allocation::DefaultSmallObject(){
 				Init();
 				for(int i=0; i<n; i++){
 					fComponents[i] =  T( other.At(i) );
@@ -168,7 +168,7 @@ namespace Protium{
 		    	\param rhs Vector to increment by (increments each element by it's corresponding one)
 		    **/
 			Vector<T,n>& operator+=(const Vector<T,n>& rhs) {
-				//PROTIUM_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
+				//ORCA_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
 				for(int i=0; i<n;i++)
 					 (*this)[i]  += rhs.At(i);
 	    		return *this;
@@ -177,7 +177,7 @@ namespace Protium{
 	  		/** Operator only defined for multiplying by another type
 	  		**/
 			Vector<T,n>& operator*=(const T& rhs) {
-				//PROTIUM_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
+				//ORCA_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
 				for(int i=0; i<n;i++)
 					 (*this)[i] *=rhs;
 	    		return *this;
@@ -186,7 +186,7 @@ namespace Protium{
 	  		/** Decrement operator
 	  		**/
 			Vector<T,n>& operator-=(const Vector<T,n>& rhs) {
-				//PROTIUM_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
+				//ORCA_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
 				for(int i=0; i<n;i++)
 					 (*this)[i] -=rhs.At(i);
 	    		return *this;
@@ -210,7 +210,7 @@ namespace Protium{
 	  		**/
 	  		const T operator*(const Vector<T,n>& rhs) const {
 	  			T ret=0;
-				//PROTIUM_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
+				//ORCA_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
 				for(int i=0; i<n;i++){
 					ret+= (this->At(i)) * (rhs.At(i) );
 				}
@@ -237,7 +237,7 @@ namespace Protium{
 	  		**/
 	  		bool operator==( const Vector<T,n> &rhs) const {
 	  			bool ret=true;
-				//PROTIUM_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
+				//ORCA_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
 	  			for(int i=0; i<n;i++)
 	  				ret &= ( this->At(i) == rhs.At(i) );
 	  			return ret;

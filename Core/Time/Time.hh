@@ -1,13 +1,13 @@
-#ifndef Protium_Time_hh_
-#define Protium_Time_hh_
+#ifndef ORCA_Time_hh_
+#define ORCA_Time_hh_
 
 #include <ctime>
 #include <string>
 #include <iomanip>
 
-#include "Protium/Time/Clock.hh"
+#include "ORCA/Time/Clock.hh"
 
-namespace Protium{
+namespace ORCA{
 	//! Objects that are to be used in timing applications
 	namespace Time{
 

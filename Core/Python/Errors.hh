@@ -1,5 +1,5 @@
-#ifndef Deuterium_Python_Errors_hh_
-#define Deuterium_Python_Errors_hh_
+#ifndef ORCA_Python_Errors_hh_
+#define ORCA_Python_Errors_hh_
 
 #include "Python.h"
 

@@ -1,7 +1,7 @@
-#ifndef Deuterium_Socket_h_
-#define Deuterium_Socket_h_
-#include "Deuterium/Networking/NetworkingException.hh"
-#include "Deuterium/Networking/NetworkUtilities.hh"
+#ifndef ORCA_Socket_h_
+#define ORCA_Socket_h_
+#include "ORCA/Networking/NetworkingException.hh"
+#include "ORCA/Networking/NetworkUtilities.hh"
 
 
 #include <sys/types.h>       // For data types
@@ -19,7 +19,7 @@
 #include <iostream>
 
 
-namespace Deuterium{
+namespace ORCA{
   namespace Networking{
 
     //!Null Socket Type
@@ -88,9 +88,9 @@ namespace Deuterium{
       void RebindToLocalPortAddress(const unsigned short& port=0, const std::string& address="" ){
         sockaddr_in localAddr;
         if(address=="")
-          Deuterium::Networking::fillAddr(this->GetLocalAddress(), port, localAddr);
+          ORCA::Networking::fillAddr(this->GetLocalAddress(), port, localAddr);
         else
-          Deuterium::Networking::fillAddr(address, port, localAddr);
+          ORCA::Networking::fillAddr(address, port, localAddr);
         if(fSockDesc>0)
           close(fSockDesc);
         fSockDesc=-1;

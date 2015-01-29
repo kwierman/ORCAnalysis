@@ -1,22 +1,22 @@
-#ifndef Deuterium_Logger_hh_
-#define Deuterium_Logger_hh_
+#ifndef ORCA_Logger_hh_
+#define ORCA_Logger_hh_
 
-namespace Deuterium{
+namespace ORCA{
 
 	namespace Logging{
 		/*
-		 * HOW TO USE DEUTERIUM LOGGING
+		 * HOW TO USE ORCA LOGGING
 		 * Logging is done in a tree-like structure, which can be accessed statically. This is supposed to replicate
 		 * ~~~~~~~~
-		 *   Deuterium::Logging::GetRootLogger();
+		 *   ORCA::Logging::GetRootLogger();
 		 *   //or get a logger by tag
-		 *   Deuterium::Logging::GetLoggerByTag("String_Tag");
+		 *   ORCA::Logging::GetLoggerByTag("String_Tag");
 		 *   //or get a thread specific logger
-		 *   Deuterium::Logging::GetThreadRootLogger();
+		 *   ORCA::Logging::GetThreadRootLogger();
 		 * ~~~~~~~~
 		 * HOW TO SET LOGGING FORMAT
 		 * ~~~~~~~~
-		 * Deuterium::Logging::Logger log("My Logger");
+		 * ORCA::Logging::Logger log("My Logger");
 		 * log.SetFormat("Something here, which I haven't defined yet");
 		 * ~~~~~~~~
 		 * HOW TO SET File Lifetime
@@ -37,12 +37,12 @@ namespace Deuterium{
 		//! Default constructor is enabled here to
 		Logger(){
 			this->fParent = RootLogger::GetInstance();
-			this->f_file = new Deuterium::FileSystem::File(fParent::GetLogLocation() + fParent::GetNewName() );
+			this->f_file = new ORCA::FileSystem::File(fParent::GetLogLocation() + fParent::GetNewName() );
 		}
 
 		Logger(Logger* parent, const std::string& tag){
 			this->fParent = parent;
-			this->f_file = new Deuterium::FileSystem::File(fParent::GetLogLocation() + tag );	
+			this->f_file = new ORCA::FileSystem::File(fParent::GetLogLocation() + tag );	
 		}
 
 
@@ -70,7 +70,7 @@ namespace Deuterium{
 
 
 	class FileLogger : Logger{
-		Deuterium::FileSystem::File fOutput;
+		ORCA::FileSystem::File fOutput;
 
 	};
 	class TerminalLogger : Logger{

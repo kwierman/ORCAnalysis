@@ -1,4 +1,4 @@
-#include "Protium/Singleton/DeletionPolicies.hh"
+#include "ORCA/Singleton/DeletionPolicies.hh"
 
 
 #include <assert.h>
@@ -6,7 +6,7 @@
 #include <iostream>
 
 //! A function that 
-void Protium::Singleton::AtExitFn(){
+void ORCA::Singleton::AtExitFn(){
 	//TODO::Debug
 	//std::cout<<"In Exit Function with list size: "<<fTrackerList->size()<<std::endl;
     assert( fTrackerList!=0 && !fTrackerList->empty());

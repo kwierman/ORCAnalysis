@@ -1,15 +1,15 @@
-#ifndef Protium_SmartPointer_h_
-#define Protium_SmartPointer_h_
+#ifndef ORCA_SmartPointer_h_
+#define ORCA_SmartPointer_h_
 
-#include "Protium/SmartPointer/CheckingPolicies.hh"
-#include "Protium/SmartPointer/ConversionPolicies.hh"
-#include "Protium/SmartPointer/OwnershipPolicy.hh"
-#include "Protium/SmartPointer/StoragePolicies.hh"
+#include "ORCA/SmartPointer/CheckingPolicies.hh"
+#include "ORCA/SmartPointer/ConversionPolicies.hh"
+#include "ORCA/SmartPointer/OwnershipPolicy.hh"
+#include "ORCA/SmartPointer/StoragePolicies.hh"
 
-#include "Protium/Design/Types.hh"
-#include "Protium/Design/RefToValue.hh"
+#include "ORCA/Design/Types.hh"
+#include "ORCA/Design/RefToValue.hh"
 
-namespace Protium{
+namespace ORCA{
 
     namespace SmartPointer{
 
@@ -73,7 +73,7 @@ namespace Protium{
         typedef const PointerType ConstPointerType;
         typedef const ReferenceType ConstReferenceType;
 
-        typedef typename Protium::Design::Select<OP::destructiveCopy,SmartPtr, const SmartPtr>::Result
+        typedef typename ORCA::Design::Select<OP::destructiveCopy,SmartPtr, const SmartPtr>::Result
                 CopyArg;
 
     private:
@@ -133,12 +133,12 @@ namespace Protium{
             GetImplRef(*this) = OP::Clone(GetImplRef(rhs));
         }
 
-        SmartPtr( Protium::Design::RefToValue<SmartPtr> rhs)
+        SmartPtr( ORCA::Design::RefToValue<SmartPtr> rhs)
         : SP(rhs), OP(rhs), KP(rhs), CP(rhs)
         {}
 
-        operator Protium::Design::RefToValue<SmartPtr>()
-        { return Protium::Design::RefToValue<SmartPtr>(*this); }
+        operator ORCA::Design::RefToValue<SmartPtr>()
+        { return ORCA::Design::RefToValue<SmartPtr>(*this); }
 
         SmartPtr& operator=(CopyArg& rhs)
         {
@@ -340,7 +340,7 @@ namespace Protium{
 
         typedef void (Tester::*unspecified_boolean_type_)();
 
-        typedef typename Protium::Design::Select<CP::allow, Tester, unspecified_boolean_type_>::Result
+        typedef typename ORCA::Design::Select<CP::allow, Tester, unspecified_boolean_type_>::Result
             unspecified_boolean_type;
 
     public:
@@ -357,7 +357,7 @@ namespace Protium{
             Insipid(PointerType) {}
         };
 
-        typedef typename Protium::Design::Select<CP::allow, PointerType, Insipid>::Result
+        typedef typename ORCA::Design::Select<CP::allow, PointerType, Insipid>::Result
             AutomaticConversionResult;
 
     public:
@@ -598,19 +598,19 @@ namespace std
         template <class> class KP,
         template <class> class SP
     >
-    struct less< Protium::SmartPointer::SmartPtr<T, OP, CP, KP, SP > >
-        : public binary_function<Protium::SmartPointer::SmartPtr<T, OP, CP, KP, SP >,
-            Protium::SmartPointer::SmartPtr<T, OP, CP, KP, SP >, bool>
+    struct less< ORCA::SmartPointer::SmartPtr<T, OP, CP, KP, SP > >
+        : public binary_function<ORCA::SmartPointer::SmartPtr<T, OP, CP, KP, SP >,
+            ORCA::SmartPointer::SmartPtr<T, OP, CP, KP, SP >, bool>
     {
-        bool operator()(const Protium::SmartPointer::SmartPtr<T, OP, CP, KP, SP >& lhs,
-            const Protium::SmartPointer::SmartPtr<T, OP, CP, KP, SP >& rhs) const
+        bool operator()(const ORCA::SmartPointer::SmartPtr<T, OP, CP, KP, SP >& lhs,
+            const ORCA::SmartPointer::SmartPtr<T, OP, CP, KP, SP >& rhs) const
         { return less<T*>()(GetImpl(lhs), GetImpl(rhs)); }
     };
 }
 
 
 #endif //File Guardian
-//END FILE PROTIUM DEFINITION
+//END FILE ORCA DEFINITION
 
 
 

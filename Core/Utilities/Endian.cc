@@ -1,7 +1,7 @@
 #include "Endian.hh"
 
 
-bool Protium::Utilities::isLittleEndian(){
+bool ORCA::Utilities::isLittleEndian(){
 
 	union probe
 	{
@@ -14,6 +14,6 @@ bool Protium::Utilities::isLittleEndian(){
 	return little_endian;
 }
 
-bool Protium::Utilities::isBigEndian(){
+bool ORCA::Utilities::isBigEndian(){
 	return !isLittleEndian();
 }

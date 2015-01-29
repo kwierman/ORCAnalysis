@@ -1,15 +1,15 @@
-#ifndef Protium_ThreadingPolicy_hh_
-#define Protium_ThreadingPolicy_hh_
+#ifndef ORCA_ThreadingPolicy_hh_
+#define ORCA_ThreadingPolicy_hh_
 
 #include <cassert>
 
-#include "Protium/Threads/Mutex.hh"
+#include "ORCA/Threads/Mutex.hh"
 
 
 //TODO: Add in the functionality for single threaded objects as seen in Android where multiple thread access produces an error and causes parent thread to exit
 
 
-namespace Protium{
+namespace ORCA{
 
 	namespace Threads{
 

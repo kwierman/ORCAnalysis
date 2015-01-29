@@ -1,7 +1,7 @@
-#ifndef Protium_ConversionPolicies_hh_
-#define Protium_ConversionPolicies_hh_
+#ifndef ORCA_ConversionPolicies_hh_
+#define ORCA_ConversionPolicies_hh_
 
-namespace Protium{
+namespace ORCA{
     namespace SmartPointer{
          struct AllowConversion{
             enum { allow = true };

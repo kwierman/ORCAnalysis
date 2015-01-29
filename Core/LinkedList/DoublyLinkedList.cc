@@ -1,8 +1,8 @@
-#include "Protium/LinkedList/DoublyLinkedList.hh"
+#include "ORCA/LinkedList/DoublyLinkedList.hh"
 #include <algorithm>
 #include <cassert>
 
-Protium::LinkedList::DoubleLinkedNode::DoubleLinkedNode(const Protium::LinkedList::DoubleLinkedNode& rhs) {
+ORCA::LinkedList::DoubleLinkedNode::DoubleLinkedNode(const ORCA::LinkedList::DoubleLinkedNode& rhs) {
     fPrev = &rhs;
     fNext = rhs.fNext;
     fPrev->fNext = this;
@@ -13,11 +13,11 @@ Protium::LinkedList::DoubleLinkedNode::DoubleLinkedNode(const Protium::LinkedLis
 
 // ----------------------------------------------------------------------------
 
-unsigned int Protium::LinkedList::DoubleLinkedNode::CountPrevCycle( const Protium::LinkedList::DoubleLinkedNode * pThis )
+unsigned int ORCA::LinkedList::DoubleLinkedNode::CountPrevCycle( const ORCA::LinkedList::DoubleLinkedNode * pThis )
 {
     if ( NULL == pThis )
         return 0;
-    const Protium::LinkedList::DoubleLinkedNode * p = pThis->fPrev;
+    const ORCA::LinkedList::DoubleLinkedNode * p = pThis->fPrev;
     if ( NULL == p )
         return 0;
     if ( pThis == p )
@@ -35,11 +35,11 @@ unsigned int Protium::LinkedList::DoubleLinkedNode::CountPrevCycle( const Protiu
 
 // ----------------------------------------------------------------------------
 
-unsigned int Protium::LinkedList::DoubleLinkedNode::CountNextCycle( const Protium::LinkedList::DoubleLinkedNode * pThis )
+unsigned int ORCA::LinkedList::DoubleLinkedNode::CountNextCycle( const ORCA::LinkedList::DoubleLinkedNode * pThis )
 {
     if ( NULL == pThis )
         return 0;
-    const Protium::LinkedList::DoubleLinkedNode * p = pThis->fNext;
+    const ORCA::LinkedList::DoubleLinkedNode * p = pThis->fNext;
     if ( NULL == p )
         return 0;
     if ( pThis == p )
@@ -57,11 +57,11 @@ unsigned int Protium::LinkedList::DoubleLinkedNode::CountNextCycle( const Protiu
 
 // ----------------------------------------------------------------------------
 
-bool Protium::LinkedList::DoubleLinkedNode::HasPrevNode( const Protium::LinkedList::DoubleLinkedNode * p ) const
+bool ORCA::LinkedList::DoubleLinkedNode::HasPrevNode( const ORCA::LinkedList::DoubleLinkedNode * p ) const
 {
     if ( this == p )
         return true;
-    const Protium::LinkedList::DoubleLinkedNode * prev = fPrev;
+    const ORCA::LinkedList::DoubleLinkedNode * prev = fPrev;
     if ( NULL == prev )
         return false;
     while ( prev != this )
@@ -75,11 +75,11 @@ bool Protium::LinkedList::DoubleLinkedNode::HasPrevNode( const Protium::LinkedLi
 
 // ----------------------------------------------------------------------------
 
-bool Protium::LinkedList::DoubleLinkedNode::HasNextNode( const Protium::LinkedList::DoubleLinkedNode * p ) const
+bool ORCA::LinkedList::DoubleLinkedNode::HasNextNode( const ORCA::LinkedList::DoubleLinkedNode * p ) const
 {
     if ( this == p )
         return true;
-    const Protium::LinkedList::DoubleLinkedNode * next = fNext;
+    const ORCA::LinkedList::DoubleLinkedNode * next = fNext;
     if ( NULL == next )
         return false;
     while ( next != this )
@@ -93,7 +93,7 @@ bool Protium::LinkedList::DoubleLinkedNode::HasNextNode( const Protium::LinkedLi
 
 // ----------------------------------------------------------------------------
 
-bool Protium::LinkedList::DoubleLinkedNode::MergeWith( Protium::LinkedList::DoubleLinkedNode & rhs )
+bool ORCA::LinkedList::DoubleLinkedNode::MergeWith( ORCA::LinkedList::DoubleLinkedNode & rhs )
 {
 
     if ( NULL == fNext )
@@ -101,7 +101,7 @@ bool Protium::LinkedList::DoubleLinkedNode::MergeWith( Protium::LinkedList::Doub
         assert( NULL == fPrev );
         return false;
     }
-    Protium::LinkedList::DoubleLinkedNode * prhs = &rhs;
+    ORCA::LinkedList::DoubleLinkedNode * prhs = &rhs;
     if ( prhs == this )
         return true;
     if ( NULL == prhs->fNext )
@@ -149,7 +149,7 @@ bool Protium::LinkedList::DoubleLinkedNode::MergeWith( Protium::LinkedList::Doub
     return true;
 }
 
-bool Protium::LinkedList::DoubleLinkedNode::RemoveThis()
+bool ORCA::LinkedList::DoubleLinkedNode::RemoveThis()
 {
 
 
@@ -179,7 +179,7 @@ bool Protium::LinkedList::DoubleLinkedNode::RemoveThis()
 
 // ----------------------------------------------------------------------------
 
-void Protium::LinkedList::DoubleLinkedNode::SwapWith(Protium::LinkedList::DoubleLinkedNode& rhs)
+void ORCA::LinkedList::DoubleLinkedNode::SwapWith(ORCA::LinkedList::DoubleLinkedNode& rhs)
 {
 
     if (fNext == this)

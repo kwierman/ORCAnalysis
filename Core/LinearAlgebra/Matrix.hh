@@ -1,13 +1,13 @@
-#ifndef Protium_Matrix_hh_
-#define Protium_Matrix_hh_
+#ifndef ORCA_Matrix_hh_
+#define ORCA_Matrix_hh_
 
-#include "Protium/LinearAlgebra/Vector.hh"
+#include "ORCA/LinearAlgebra/Vector.hh"
 
 #include <vector>
 #include <cmath>
 
 
-namespace Protium{
+namespace ORCA{
 	namespace LinearAlgebra{
 
 		//! Implements matrix addition, subtraction, multiplication
@@ -109,9 +109,9 @@ namespace Protium{
 		};
 
 		template<typename T, int n, int m>
-		class Matrix : public Protium::Allocation::DefaultSmallObject {
+		class Matrix : public ORCA::Allocation::DefaultSmallObject {
 			//! Data implementation
-			std::vector<  Vector<T,n>, Protium::Allocation::STLAdapter< Vector<T, n> > > fComponents;
+			std::vector<  Vector<T,n>, ORCA::Allocation::STLAdapter< Vector<T, n> > > fComponents;
 		public:
 			
             typedef T              value_type;
@@ -128,7 +128,7 @@ namespace Protium{
 			}
 
 			//! Default constructor
-			Matrix() : Protium::Allocation::DefaultSmallObject() {
+			Matrix() : ORCA::Allocation::DefaultSmallObject() {
 				Init();
 			}
 
@@ -201,7 +201,7 @@ namespace Protium{
 	  		/** Operator only defined for multiplying by another type
 	  		**/
 			Matrix<T,n,m>& operator*=(const T& rhs) {
-				//PROTIUM_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
+				//ORCA_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
 				for(int i=0; i<n;i++)
 					 (*this)[i] *=rhs;
 	    		return *this;
@@ -232,7 +232,7 @@ namespace Protium{
 	  		/** Decrement operator
 	  		**/
 			Matrix<T,n,m>& operator-=(const Matrix<T,n,m>& rhs) {
-				//PROTIUM_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
+				//ORCA_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
 				for(int i=0; i<n;i++)
 					 (*this)[i] -=rhs.At(i);
 	    		return *this;
@@ -298,7 +298,7 @@ namespace Protium{
 	  		**/
 	  		bool operator==( const Matrix<T,n,m> &rhs) const {
 	  			bool ret=true;
-				//PROTIUM_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
+				//ORCA_STATIC_ASSERT(n == m,"Vector Dimensions Must Match");
 	  			for(int i=0; i<n;i++)
 	  				ret &= ( this->At(i) == rhs.At(i) );
 	  			return ret;

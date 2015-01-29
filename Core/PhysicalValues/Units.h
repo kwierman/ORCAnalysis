@@ -1,7 +1,7 @@
-#ifndef Protium_Units_h_
-#define Protium_Units_h_
+#ifndef ORCA_Units_h_
+#define ORCA_Units_h_
 
-namespace Protium{
+namespace ORCA{
 
 	namespace PhysicalValues{
 

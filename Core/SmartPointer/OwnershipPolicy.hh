@@ -1,21 +1,21 @@
-#ifndef Protium_OwnershipPolicy_h_
-#define Protium_OwnershipPolicy_h_
+#ifndef ORCA_OwnershipPolicy_h_
+#define ORCA_OwnershipPolicy_h_
 
-#include "Protium/LinkedList/DoublyLinkedList.hh"
+#include "ORCA/LinkedList/DoublyLinkedList.hh"
 
-#include "Protium/Allocation/SmallObject.hh"
-#include "Protium/Threads/Mutex.hh"
+#include "ORCA/Allocation/SmallObject.hh"
+#include "ORCA/Threads/Mutex.hh"
 
 
 
-namespace Protium{
+namespace ORCA{
 	namespace SmartPointer{
 
         template<class Host>
         class ReferenceCounted{
             unsigned* fCount;
         public:
-            ReferenceCounted() : fCount( static_cast<unsigned*>(Protium::Allocation::SmallObject<>::operator new( sizeof(unsigned) ) ) ) {
+            ReferenceCounted() : fCount( static_cast<unsigned*>(ORCA::Allocation::SmallObject<>::operator new( sizeof(unsigned) ) ) ) {
                 assert(fCount!=0);
                 *fCount = 1;
             }
@@ -30,7 +30,7 @@ namespace Protium{
             }
             bool Release(const Host& val){
                 if( !(--(*fCount) ) ){
-                    Protium::Allocation::SmallObject<>::operator delete(fCount, sizeof(unsigned) );
+                    ORCA::Allocation::SmallObject<>::operator delete(fCount, sizeof(unsigned) );
                     return true;
                 }
                 return false;
@@ -62,7 +62,7 @@ namespace Protium{
 ////////////////////////////////////////////////////////////////////////////////
 
     template <template <class, class> class ThreadingModel,
-              class MX = Protium::Threads::Mutex >
+              class MX = ORCA::Threads::Mutex >
     struct RefCountedMTAdj
     {
         template <class P>
@@ -76,7 +76,7 @@ namespace Protium{
             RefCountedMT()
             {
                 pCount_ = static_cast<CountPtrType>(
-                    Protium::Allocation::SmallObject<Protium::Threads::InstanceLocked>::operator new(
+                    ORCA::Allocation::SmallObject<ORCA::Threads::InstanceLocked>::operator new(
                         sizeof(*pCount_)));
                 assert(pCount_);
                 //*pCount_ = 1;
@@ -105,7 +105,7 @@ namespace Protium{
                 ThreadingModel< RefCountedMT, MX >::AtomicDecrement( *pCount_, 0, isZero );
                 if ( isZero )
                 {
-                    Protium::Allocation::SmallObject<Protium::Threads::InstanceLocked>::operator delete(
+                    ORCA::Allocation::SmallObject<ORCA::Threads::InstanceLocked>::operator delete(
                         const_cast<CountType *>(pCount_),
                         sizeof(*pCount_));
                     return true;
@@ -205,7 +205,7 @@ namespace Protium{
 
 
     template <class P>
-    class RefLinked : public Protium::LinkedList::DoubleLinkedNode
+    class RefLinked : public ORCA::LinkedList::DoubleLinkedNode
     {
 
     public:
@@ -214,19 +214,19 @@ namespace Protium{
 
         template <class P1>
         RefLinked(const RefLinked<P1>& rhs)
-        : Protium::LinkedList::DoubleLinkedNode(rhs)
+        : ORCA::LinkedList::DoubleLinkedNode(rhs)
         {}
 
         static P Clone(const P& val)
         { return val; }
 
         bool Release(const P&)
-        { return Protium::LinkedList::DoubleLinkedNode::RemoveThis(); }
+        { return ORCA::LinkedList::DoubleLinkedNode::RemoveThis(); }
 
         template < class P1 >
         bool Merge( RefLinked< P1 > & rhs )
         {
-            return Protium::LinkedList::DoubleLinkedNode::MergeWith( rhs );
+            return ORCA::LinkedList::DoubleLinkedNode::MergeWith( rhs );
         }
     };
 
@@ -290,7 +290,7 @@ namespace Protium{
             // Make it depended on template parameter
             static const bool DependedFalse = sizeof(P*) == 0;
 
-            PROTIUM_STATIC_ASSERT(DependedFalse, This_Policy_Disallows_Value_Copying);
+            ORCA_STATIC_ASSERT(DependedFalse, This_Policy_Disallows_Value_Copying);
         }
 
         static bool Release(const P&)
@@ -307,5 +307,5 @@ namespace Protium{
 	}
 }
 
-#endif //Protium_OwnershipPolicy_h_
+#endif //ORCA_OwnershipPolicy_h_
 

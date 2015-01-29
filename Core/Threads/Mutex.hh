@@ -3,12 +3,12 @@
     \author Kevin Wierman
  */
 
-#ifndef Protium_Mutex_hh_
-#define Protium_Mutex_hh_
+#ifndef ORCA_Mutex_hh_
+#define ORCA_Mutex_hh_
 
 #include <pthread.h> //For access to pthreads
 
-namespace Protium{
+namespace ORCA{
     namespace Threads{
 
         /*! \class Mutex
@@ -50,4 +50,4 @@ namespace Protium{
 
 
 
-#endif //Protium_Threads_h_
+#endif //ORCA_Threads_h_

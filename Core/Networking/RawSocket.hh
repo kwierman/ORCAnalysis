@@ -1,8 +1,8 @@
-#ifndef Deuterium_RawSocket_hh_
-#define Deuterium_RawSocket_hh_
+#ifndef ORCA_RawSocket_hh_
+#define ORCA_RawSocket_hh_
 
-#include "Deuterium/Networking/Socket.hh"
-#include "Deuterium/Networking/NetworkingException.hh"
+#include "ORCA/Networking/Socket.hh"
+#include "ORCA/Networking/NetworkingException.hh"
 
 #include <vector>
 #include <iostream>
@@ -29,7 +29,7 @@
 	132 	Stream Control Transmission Protocol 	SCTP
 */
 
-namespace Deuterium{
+namespace ORCA{
 	namespace Networking{
 
 		struct ipv4header {

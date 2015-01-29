@@ -1,17 +1,17 @@
-#include "Protium/Math/Random.hh"
+#include "ORCA/Math/Random.hh"
 
 #include <ctime>
 #include <cassert>
 
-Protium::Math::Random::Random(unsigned seed):fSeed(seed?seed : static_cast<unsigned>( std::time(0) ) ) {}
+ORCA::Math::Random::Random(unsigned seed):fSeed(seed?seed : static_cast<unsigned>( std::time(0) ) ) {}
 
-void Protium::Math::Random::setSeed(unsigned seed){
+void ORCA::Math::Random::setSeed(unsigned seed){
 	fSeed = (seed? seed : static_cast<unsigned>(std::time(0)));
 }
-unsigned Protium::Math::Random::getSeed(){return fSeed;}
+unsigned ORCA::Math::Random::getSeed(){return fSeed;}
 
 
-unsigned short Protium::Math::Random::nextShort(){
+unsigned short ORCA::Math::Random::nextShort(){
 
 	///TODO: There is a warning generated here.
     static const unsigned a =24699;
@@ -20,12 +20,12 @@ unsigned short Protium::Math::Random::nextShort(){
 
 
 
-unsigned int Protium::Math::Random::nextUint()
+unsigned int ORCA::Math::Random::nextUint()
 {
     return (unsigned int)nextShort() << (16 * sizeof(unsigned short)) |
         nextShort();
 }
-unsigned int Protium::Math::Random::nextUint(unsigned int high)
+unsigned int ORCA::Math::Random::nextUint(unsigned int high)
 {
     assert(high < 4294967295 - 1);
     ++high;
@@ -39,7 +39,7 @@ unsigned int Protium::Math::Random::nextUint(unsigned int high)
     return a;
 }
 
-double Protium::Math::Random::nextDouble(double low, double high){
+double ORCA::Math::Random::nextDouble(double low, double high){
     //highest short: 65535
     double retValue = static_cast<double>(nextShort() ) - low;
     retValue*=(high-low)/(65535.-0.);

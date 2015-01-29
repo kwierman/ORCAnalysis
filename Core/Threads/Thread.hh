@@ -1,14 +1,14 @@
-#ifndef Protium_Thread_hh_
-#define Protium_Thread_hh_
+#ifndef ORCA_Thread_hh_
+#define ORCA_Thread_hh_
 
 #include <pthread.h>
 #include <vector>
 #include <unistd.h>
 #include <algorithm>
 
-#include "Protium/Threads/ThreadingPolicy.hh"
+#include "ORCA/Threads/ThreadingPolicy.hh"
 
-namespace Protium{
+namespace ORCA{
 
 	namespace Threads{
 
@@ -69,7 +69,7 @@ namespace Protium{
 			virtual void Create(){
 				lock l(this);
 				(void)l;
-				pthread_create(&thread,attr,::Protium::Threads::Private::threadingFunction,this);				
+				pthread_create(&thread,attr,::ORCA::Threads::Private::threadingFunction,this);				
 			}
 
 		protected:
@@ -124,7 +124,7 @@ namespace Protium{
 			pid_t fThreadID;
 			static RootThread* fRoot;
 			RootThread() {
-				std::atexit(&Protium::Threads::RootThread::FinishThreads);
+				std::atexit(&ORCA::Threads::RootThread::FinishThreads);
 				fThreadID = thisThreadID();
 			}
 			~RootThread(){

@@ -1,5 +1,5 @@
-#ifndef Deuterium_Options_h_
-#define Deuterium_Options_h_
+#ifndef ORCA_Options_h_
+#define ORCA_Options_h_
 
 #include <string>
 #include <vector>
@@ -7,14 +7,14 @@
 #include <iostream>
 #include <cstdlib>
 
-namespace Deuterium{
+namespace ORCA{
 	namespace Options{
 
 /**
 	To be used as follows:
 	~~~~~~~~~~~~~~~~
 	int main(int argc, char* argv[]){
-		Deuterium::Options::OptionList opt(argc, argv);
+		ORCA::Options::OptionList opt(argc, argv);
 		opt.setOption('l',"list","",false);
 		opt.parse();
 		opt.printUsage();

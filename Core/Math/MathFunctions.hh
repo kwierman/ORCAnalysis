@@ -1,7 +1,7 @@
-#ifndef Protium_MathFunction_hh_
-#define Protium_MathFunction_hh_
+#ifndef ORCA_MathFunction_hh_
+#define ORCA_MathFunction_hh_
 
-namespace Protium{
+namespace ORCA{
 
 	namespace Math{
 

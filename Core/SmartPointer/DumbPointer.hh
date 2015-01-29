@@ -1,5 +1,5 @@
-#ifndef Protium_DumbPointer_hh_
-#define Protium_DumbPointer_hh_
+#ifndef ORCA_DumbPointer_hh_
+#define ORCA_DumbPointer_hh_
 
 /**
 	\file DumbPointer
@@ -10,7 +10,7 @@
 **/
 
 
-namespace Protium{
+namespace ORCA{
 	namespace SmartPointer{
 
 		/**
@@ -52,4 +52,4 @@ namespace Protium{
 
 
 
-#endif //Protium_DumbPointer_hh_
+#endif //ORCA_DumbPointer_hh_

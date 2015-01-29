@@ -1,7 +1,7 @@
-#ifndef Deuterium_FileSystem_FileType_hh_
-#define Deuterium_FileSystem_FileType_hh_
+#ifndef ORCA_FileSystem_FileType_hh_
+#define ORCA_FileSystem_FileType_hh_
 
-namespace Deuterium{
+namespace ORCA{
 
 
 	struct UnknownFileType{

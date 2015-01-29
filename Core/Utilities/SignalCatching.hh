@@ -1,15 +1,15 @@
-#ifndef Protium_SignalCatching_hh_
-#define Protium_SignalCatching_hh_ 
+#ifndef ORCA_SignalCatching_hh_
+#define ORCA_SignalCatching_hh_ 
 
-#include "Protium/Singleton/Singleton.hh"
-#include "Protium/Threads/ThreadingPolicy.hh"
-#include "Protium/Threads/Mutex.hh"
+#include "ORCA/Singleton/Singleton.hh"
+#include "ORCA/Threads/ThreadingPolicy.hh"
+#include "ORCA/Threads/Mutex.hh"
 
 #include <signal.h>
 
 #include <iostream>
 
-namespace Protium{
+namespace ORCA{
 
 	namespace Private{
 		void signal_callback_handler(int signum);
@@ -46,10 +46,10 @@ namespace Protium{
 				virtual ~SignalCatchingImplementation(){}
 			public:
 				void Setup(){
-					signal(SIGINT, Protium::Private::signal_callback_handler);
-					signal(SIGABRT, Protium::Private::signal_callback_handler);
-					signal(SIGBUS , Protium::Private::signal_callback_handler);
-					signal(SIGSEGV , Protium::Private::signal_callback_handler);
+					signal(SIGINT, ORCA::Private::signal_callback_handler);
+					signal(SIGABRT, ORCA::Private::signal_callback_handler);
+					signal(SIGBUS , ORCA::Private::signal_callback_handler);
+					signal(SIGSEGV , ORCA::Private::signal_callback_handler);
 				}
 				//TODO:: Generalize this so that this handles a stack of handlers. 
 					//Any one may interrupt the handler and proceed with calculations
@@ -61,14 +61,14 @@ namespace Protium{
 	    	    SignalCatchingImplementation & operator = ( const SignalCatchingImplementation & );
 		};
 
-		typedef Protium::Singleton::Singleton<SignalCatchingImplementation, 
-		Protium::Singleton::CreateNew, 
-		Protium::Singleton::DeleteOnce, 
-		Protium::Threads::StaticLocked> SignalCatcher;
+		typedef ORCA::Singleton::Singleton<SignalCatchingImplementation, 
+		ORCA::Singleton::CreateNew, 
+		ORCA::Singleton::DeleteOnce, 
+		ORCA::Threads::StaticLocked> SignalCatcher;
 
 	}
 }
 
 
-#endif //Protium_SignalCatching_h_
+#endif //ORCA_SignalCatching_h_
 

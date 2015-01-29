@@ -3,11 +3,11 @@ file(GLOB module_sources *.cc)
 file(GLOB module_headers *.hh)
 
 #Make the library
-add_library(ProtiumSmartPointer SHARED ${module_sources} ${module_headers})
-target_link_libraries(ProtiumSmartPointer ProtiumDesign ProtiumThreads  ProtiumLinkedList ProtiumAllocation)
-set_target_properties(ProtiumSmartPointer PROPERTIES LINKER_LANGUAGE CXX)
-install(TARGETS ProtiumSmartPointer DESTINATION lib EXPORT ProtiumConfig)
+add_library(ORCASmartPointer SHARED ${module_sources} ${module_headers})
+target_link_libraries(ORCASmartPointer ORCADesign ORCAThreads  ORCALinkedList ORCAAllocation)
+set_target_properties(ORCASmartPointer PROPERTIES LINKER_LANGUAGE CXX)
+install(TARGETS ORCASmartPointer DESTINATION lib EXPORT ORCAConfig)
 
 #Install Headers
-install(FILES ${module_headers} DESTINATION include/Protium/SmartPointer)
+install(FILES ${module_headers} DESTINATION include/ORCA/SmartPointer)
 

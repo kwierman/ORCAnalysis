@@ -1,9 +1,9 @@
-#ifndef Protium_Locker_hh_
-#define Protium_Locker_hh_
+#ifndef ORCA_Locker_hh_
+#define ORCA_Locker_hh_
 
-#include "Protium/Design/NonCopyable.hh"
+#include "ORCA/Design/NonCopyable.hh"
 
-namespace Protium{
+namespace ORCA{
 	namespace Threads{
 
 		/**
@@ -16,7 +16,7 @@ namespace Protium{
 		**/
 
 	    template <class Host>
-		class Locker : public Protium::Design::NonCopyable {
+		class Locker : public ORCA::Design::NonCopyable {
     	    Host * fHost;
 	    public:
         	Locker( const Host* p ) : fHost( const_cast< Host* >( p ) ){
@@ -40,4 +40,4 @@ namespace Protium{
 	}
 }
 
-#endif //Protium_Locker_hh_
+#endif //ORCA_Locker_hh_

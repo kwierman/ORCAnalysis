@@ -1,6 +1,6 @@
-#ifndef Deuterium_Python_Function_hh_
-#define Deuterium_Python_Function_hh_
-namespace Deuterium{
+#ifndef ORCA_Python_Function_hh_
+#define ORCA_Python_Function_hh_
+namespace ORCA{
 	namespace Python{
 		//The C Function always has two arguments, the self argument and the arguments argument
 		// It always returns a PyObject*

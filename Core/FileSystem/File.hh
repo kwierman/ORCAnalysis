@@ -1,10 +1,10 @@
-#ifndef Deuterium_File_hh_
-#define Deuterium_File_hh_
+#ifndef ORCA_File_hh_
+#define ORCA_File_hh_
 
 #include <fstream>
 #include <string>
 
-namespace Deuterium{
+namespace ORCA{
 
 	namespace FileSystem{
 
@@ -49,4 +49,4 @@ namespace Deuterium{
 }
 
 
-#endif //Deuterium_File_h_
+#endif //ORCA_File_h_

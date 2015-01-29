@@ -1,12 +1,12 @@
-#ifndef Protium_Singleton_hh_
-#define Protium_Singleton_hh_
+#ifndef ORCA_Singleton_hh_
+#define ORCA_Singleton_hh_
 
-#include "Protium/Singleton/CreationPolicies.hh"
-#include "Protium/Singleton/DeletionPolicies.hh"
-#include "Protium/Threads/ThreadingPolicy.hh"
-#include "Protium/Threads/Mutex.hh"
+#include "ORCA/Singleton/CreationPolicies.hh"
+#include "ORCA/Singleton/DeletionPolicies.hh"
+#include "ORCA/Threads/ThreadingPolicy.hh"
+#include "ORCA/Threads/Mutex.hh"
 
-namespace Protium{
+namespace ORCA{
 
     /** Contains all helper objects for creating threadsafe singletons with longevity tracking
     **/
@@ -22,8 +22,8 @@ namespace Protium{
         template<   class Host,
                     template <class> class CreationPolicy = CreateNew,
                     template <class> class DeletionPolicy = DeleteOnce,
-                    template <class, class> class ThreadingPolicy = Protium::Threads::InstanceLocked,
-                    class MutexPolicy = Protium::Threads::Mutex>
+                    template <class, class> class ThreadingPolicy = ORCA::Threads::InstanceLocked,
+                    class MutexPolicy = ORCA::Threads::Mutex>
         class Singleton{
         public:
             //! Declaration of the host interior to the class

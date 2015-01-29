@@ -1,10 +1,10 @@
-#ifndef Deuterium_NetworkingException_hh_
-#define Deuterium_NetworkingException_hh_
+#ifndef ORCA_NetworkingException_hh_
+#define ORCA_NetworkingException_hh_
 
 #include <exception>
 #include <string>            // For string
 
-namespace Deuterium{
+namespace ORCA{
 
 	namespace Networking{
 

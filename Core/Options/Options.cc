@@ -1,8 +1,8 @@
-#include "Deuterium/Options/Options.hh"
+#include "Deuterium/ORCA/ORCA.hh"
 
 
 
-Deuterium::Options::OptionList::OptionList(int argc, char* argv[]){
+Deuterium::ORCA::OptionList::OptionList(int argc, char* argv[]){
 	program_name = argv[0];
 	for(int i=1; i<argc; i++){
 		raw.push_back(argv[i]);
@@ -15,19 +15,19 @@ Deuterium::Options::OptionList::OptionList(int argc, char* argv[]){
 	this->setOption('h',"help",0,false,"","Print this help statement");
 }
 
-void Deuterium::Options::OptionList::setOption(const char& short_opt,
+void Deuterium::ORCA::OptionList::setOption(const char& short_opt,
 	const std::string& long_opt,
 	const unsigned& n_args=0,
 	const bool& required=false,
 	const std::string& default_value="",
 	const std::string& help_statement=""){
 	Option opt(long_opt, default_value, "", help_statement, n_args, required);
-	options.insert(std::make_pair(short_opt, opt) );
+	ORCA.insert(std::make_pair(short_opt, opt) );
 
 }
 
 
-void Deuterium::Options::OptionList::parse(){
+void Deuterium::ORCA::OptionList::parse(){
 	//	The new version
 	for(str_vec_it it = raw.begin(); it!= raw.end(); ++it){
 		if( isOption( *it ) )
@@ -36,7 +36,7 @@ void Deuterium::Options::OptionList::parse(){
 			additional_arguments.push_back( (*it));
 	}
 	//check the list to see if anything is required, but now met
-	for(map_it it = options.begin(); it!= options.end(); it++){
+	for(map_it it = ORCA.begin(); it!= ORCA.end(); it++){
 		if( it->second.required && !(it->second.was_set)){
 			std::cout<<"Error Option required: "<<it->first<<std::endl;
 			exit(-1);
@@ -46,11 +46,11 @@ void Deuterium::Options::OptionList::parse(){
 
 }
 
-void Deuterium::Options::OptionList::printUsage(){
+void Deuterium::ORCA::OptionList::printUsage(){
 	
 	std::cout<<"Usage: "<<this->program_name<<" [[<-short_option <option_value> >] [<--long_option <option_value> >] [remaining parameters]]"<<std::endl;
-	std::cout<<"Options:"<<std::endl;
-	for(map_it it = options.begin(); it!= options.end(); ++it){
+	std::cout<<"ORCA:"<<std::endl;
+	for(map_it it = ORCA.begin(); it!= ORCA.end(); ++it){
 		std::cout<<"-"<<it->first<<"\t"<<
 		"--"<<it->second.long_opt<<"\t";
 		if(it->second.required)
@@ -62,38 +62,38 @@ void Deuterium::Options::OptionList::printUsage(){
 }
 
 
-Deuterium::Options::Option Deuterium::Options::OptionList::getOption(const char& short_opt){
-	return options.find(short_opt)->second ;
+Deuterium::ORCA::Option Deuterium::ORCA::OptionList::getOption(const char& short_opt){
+	return ORCA.find(short_opt)->second ;
 }
 
-unsigned Deuterium::Options::OptionList::getNAdditionalArguements(){
+unsigned Deuterium::ORCA::OptionList::getNAdditionalArguements(){
 	return additional_arguments.size();
 }
-std::string Deuterium::Options::OptionList::getAdditionalArguement(const unsigned& i){
+std::string Deuterium::ORCA::OptionList::getAdditionalArguement(const unsigned& i){
 	return additional_arguments.at(i);
 }
 
 
 //! Checks to see if this is an option
-bool Deuterium::Options::OptionList::isOption(const std::string& input){
+bool Deuterium::ORCA::OptionList::isOption(const std::string& input){
 	if(input.size()>1)
 		return input[0]=='-';
 	return false;
 }
 
 //! Checks to see if this is a long option
-bool Deuterium::Options::OptionList::isLongOption(const std::string& input){
+bool Deuterium::ORCA::OptionList::isLongOption(const std::string& input){
 	if(input.size()>2)
 		return isOption(input) && input[1]=='-';
 	return false;
 }
 
 //! Looks to see if this is an option
-void Deuterium::Options::OptionList::ParseOption(str_vec_it& it){
+void Deuterium::ORCA::OptionList::ParseOption(str_vec_it& it){
 	//branch on long option or short option.
 	if(isLongOption(*it ) ){
 		std::string long_opt = (*it).substr(2);
-		for(map_it mit = options.begin(); mit!= options.end() ; ++mit){
+		for(map_it mit = ORCA.begin(); mit!= ORCA.end() ; ++mit){
 			if( mit->second.long_opt == long_opt ){
 				mit->second.was_set = true;
 				ConsumeArguements(mit, it);
@@ -106,8 +106,8 @@ void Deuterium::Options::OptionList::ParseOption(str_vec_it& it){
 	else{
 		std::string short_opt = (*it).substr(1);
 		for(int i=0; i< short_opt.size(); i++){
-			map_it mit = options.find( short_opt[i] );
-			if(mit == options.end() ){
+			map_it mit = ORCA.find( short_opt[i] );
+			if(mit == ORCA.end() ){
 				std::cout<<"Warning: Unkown short option: "<<short_opt[i];
 				continue;
 			}
@@ -123,7 +123,7 @@ void Deuterium::Options::OptionList::ParseOption(str_vec_it& it){
 
 }
 
-void Deuterium::Options::OptionList::ConsumeArguements(map_it& mit, str_vec_it& sit){
+void Deuterium::ORCA::OptionList::ConsumeArguements(map_it& mit, str_vec_it& sit){
 	for(int n_args_consumed=0;n_args_consumed < mit->second.n_args; ++n_args_consumed ){
 		//consume the argument
 		str_vec_it tit = sit;

@@ -1,11 +1,11 @@
-#ifndef Deuterium_FileSystem_hh_
-#define Deuterium_FileSystem_hh_
+#ifndef ORCA_FileSystem_hh_
+#define ORCA_FileSystem_hh_
 
-#include "Deuterium/FileSystem/Directory.hh"
-#include "Deuterium/FileSystem/File.hh"
-#include "Deuterium/FileSystem/FileUtilities.hh"
+#include "ORCA/FileSystem/Directory.hh"
+#include "ORCA/FileSystem/File.hh"
+#include "ORCA/FileSystem/FileUtilities.hh"
 
-namespace Deuterium{
+namespace ORCA{
 
 	//! Includes file and directory 
 	namespace FileSystem{

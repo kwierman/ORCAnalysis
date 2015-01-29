@@ -1,7 +1,7 @@
-#ifndef Deuterium_Logging_Severity_hh_
-#define Deuterium_Logging_Severity_hh_
+#ifndef ORCA_Logging_Severity_hh_
+#define ORCA_Logging_Severity_hh_
 
-namespace Deuterium{
+namespace ORCA{
 	namespace Logging{
 		enum class Severity : unsigned short {
 		Global = 1,

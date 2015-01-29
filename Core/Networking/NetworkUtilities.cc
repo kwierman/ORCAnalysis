@@ -1,5 +1,5 @@
-#include "Deuterium/Networking/NetworkUtilities.hh"
-#include "Deuterium/Networking/NetworkingException.hh"
+#include "ORCA/Networking/NetworkUtilities.hh"
+#include "ORCA/Networking/NetworkingException.hh"
 
 #include <string>
 
@@ -8,7 +8,7 @@
 #include <string>
 #include <string.h>
 
-static void Deuterium::Networking::fillAddr(const std::string &address, unsigned short port, sockaddr_in &addr){
+static void ORCA::Networking::fillAddr(const std::string &address, unsigned short port, sockaddr_in &addr){
   memset(&addr, 0, sizeof(addr) );  // Zero out address structure
   addr.sin_family = AF_INET;       // Internet address
 
@@ -26,7 +26,7 @@ static void Deuterium::Networking::fillAddr(const std::string &address, unsigned
 }
 
 //! XOR Czech-Sum
-static  unsigned short Deuterium::Networking::csum(unsigned short *buf, int len){
+static  unsigned short ORCA::Networking::csum(unsigned short *buf, int len){
     unsigned long sum;
     for(sum=0; len>0; len--)
             sum += *buf++;

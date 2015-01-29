@@ -1,23 +1,23 @@
-#include "Protium/Threads/Mutex.hh"
+#include "ORCA/Threads/Mutex.hh"
 
-Protium::Threads::Mutex::Mutex() : fIsLocked(false){
+ORCA::Threads::Mutex::Mutex() : fIsLocked(false){
     pthread_mutex_init(&fMtx, 0);
 }
 
-Protium::Threads::Mutex::~Mutex(){
+ORCA::Threads::Mutex::~Mutex(){
 	pthread_mutex_destroy(&fMtx);
 }
 
-void Protium::Threads::Mutex::Lock(){
+void ORCA::Threads::Mutex::Lock(){
     pthread_mutex_lock(&fMtx); 
     fIsLocked = true;
 }
 
-void Protium::Threads::Mutex::Unlock(){
+void ORCA::Threads::Mutex::Unlock(){
     pthread_mutex_unlock(&fMtx); 
     fIsLocked = false;
 }
 
-bool Protium::Threads::Mutex::IsLocked(){
+bool ORCA::Threads::Mutex::IsLocked(){
     return fIsLocked;
 }

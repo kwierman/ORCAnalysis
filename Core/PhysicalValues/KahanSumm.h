@@ -1,12 +1,12 @@
-#ifndef Protium_KahanSumm_h_
-#define Protium_KahanSumm_h_
+#ifndef ORCA_KahanSumm_h_
+#define ORCA_KahanSumm_h_
 
-namespace Protium{
+namespace ORCA{
 	namespace PhysicalValues{
 
-		PhysicalValue KahanSumm(std::vector<PhysicalValue, Protium::Allocation::STLAdapter< PhysicalValue > > values){
+		PhysicalValue KahanSumm(std::vector<PhysicalValue, ORCA::Allocation::STLAdapter< PhysicalValue > > values){
 			PhysicalValue p;
-			typedef std::vector<PhysicalValue, Protium::Allocation::STLAdapter< PhysicalValue > >::iterator pIt;
+			typedef std::vector<PhysicalValue, ORCA::Allocation::STLAdapter< PhysicalValue > >::iterator pIt;
 			for(pIt it= values.begin(); it!=values.end(); ++it){
 				PhysicalValue temp = p-(*it);
 				PhysicalValue temp2 = p+temp;

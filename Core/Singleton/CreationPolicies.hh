@@ -1,9 +1,9 @@
-#ifndef Protium_CreationPolicies_hh_
-#define Protium_CreationPolicies_hh_
+#ifndef ORCA_CreationPolicies_hh_
+#define ORCA_CreationPolicies_hh_
 
 #include <malloc.h>
 
-namespace Protium{
+namespace ORCA{
 	namespace Singleton{
     
     	//! Helper Struct to create with new operator

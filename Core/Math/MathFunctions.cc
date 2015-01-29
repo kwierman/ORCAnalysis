@@ -1,6 +1,6 @@
-#include "Protium/Math/MathFunctions.hh"
+#include "ORCA/Math/MathFunctions.hh"
 
-namespace Protium{
+namespace ORCA{
 
 	namespace Math{
 

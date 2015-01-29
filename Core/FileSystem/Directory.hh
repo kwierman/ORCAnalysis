@@ -1,5 +1,5 @@
-#ifndef Deuterium_Directory_h_
-#define Deuterium_Directory_h_
+#ifndef ORCA_Directory_h_
+#define ORCA_Directory_h_
 
 
 #include <string>
@@ -7,10 +7,10 @@
 #include <dirent.h>
 #include <sstream>
 
-#include "Deuterium/FileSystem/File.hh"
-#include "Deuterium/FileSystem/FileUtilities.hh"
+#include "ORCA/FileSystem/File.hh"
+#include "ORCA/FileSystem/FileUtilities.hh"
 
-namespace Deuterium {
+namespace ORCA {
 
 	namespace FileSystem {
 

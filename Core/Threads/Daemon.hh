@@ -1,7 +1,7 @@
-#ifndef Protium_Daemon_hh_
-#define Protium_Daemon_hh_
+#ifndef ORCA_Daemon_hh_
+#define ORCA_Daemon_hh_
 
-namespace Protium{
+namespace ORCA{
 	namespace Threads{
 
 

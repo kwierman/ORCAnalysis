@@ -1,4 +1,4 @@
-#include "Deuterium/FileSystem/FileUtilities.hh"
+#include "ORCA/FileSystem/FileUtilities.hh"
 
 #include <string>//! for returning the string representation of path
 #include <unistd.h>//! 
@@ -7,7 +7,7 @@
 
 
 
-static inline unsigned Deuterium::FileSystem::SwapWord(const unsigned& word){
+static inline unsigned ORCA::FileSystem::SwapWord(const unsigned& word){
     return (
         ((word & 0xff000000) >> 24) |
         ((word & 0x00ff0000) >> 8) |
@@ -17,7 +17,7 @@ static inline unsigned Deuterium::FileSystem::SwapWord(const unsigned& word){
 }
 
 
-std::string Deuterium::FileSystem::cwd(){
+std::string ORCA::FileSystem::cwd(){
 	char cCurrentPath[FILENAME_MAX];
 
 	if (!getcwd(cCurrentPath, sizeof(cCurrentPath))){

@@ -1,5 +1,5 @@
-#ifndef Protium_DeletionPolicies_hh_
-#define Protium_DeletionPolicies_hh_
+#ifndef ORCA_DeletionPolicies_hh_
+#define ORCA_DeletionPolicies_hh_
 
 #include <list>
 #include <vector>
@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-namespace Protium{
+namespace ORCA{
 
 	namespace Singleton{
 

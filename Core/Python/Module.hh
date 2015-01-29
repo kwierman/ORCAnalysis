@@ -1,5 +1,5 @@
-#ifndef Deuterium_Python_Module_hh
-#define Deuterium_Python_Module_hh
+#ifndef ORCA_Python_Module_hh
+#define ORCA_Python_Module_hh
 
 /*
 //The following should be used for the third     METH_VARARGS | METH_KEYWORDS

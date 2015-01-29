@@ -1,12 +1,12 @@
-#ifndef Protium_SmartPointer_Checking_hh_
-#define Protium_SmartPointer_Checking_hh_
+#ifndef ORCA_SmartPointer_Checking_hh_
+#define ORCA_SmartPointer_Checking_hh_
 
-#include "Protium/SmartPointer/NullPointerException.hh"
+#include "ORCA/SmartPointer/NullPointerException.hh"
 
-#include "Protium/Design/Unused.hh"
-#include "Protium/Design/Assert.hh"
+#include "ORCA/Design/Unused.hh"
+#include "ORCA/Design/Assert.hh"
 
-namespace Protium{
+namespace ORCA{
 	namespace SmartPointer{
         template <class Host>
         struct NoCheck{
@@ -43,7 +43,7 @@ namespace Protium{
 
         static void OnDefault(const Host&){
             static const bool DependedFalse = sizeof(Host*) == 0;
-            PROTIUM_STATIC_ASSERT(DependedFalse, ERROR_This_Policy_Does_Not_Allow_Default_Initialization);
+            ORCA_STATIC_ASSERT(DependedFalse, ERROR_This_Policy_Does_Not_Allow_Default_Initialization);
         }
 
         static void OnInit(const Host& val){ 

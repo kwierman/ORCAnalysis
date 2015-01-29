@@ -1,7 +1,7 @@
-#ifndef Protium_DoublyLinkedList_hh_
-#define Protium_DoublyLinkedList_hh_
+#ifndef ORCA_DoublyLinkedList_hh_
+#define ORCA_DoublyLinkedList_hh_
 
-namespace Protium{
+namespace ORCA{
   namespace LinkedList{
   
     /**

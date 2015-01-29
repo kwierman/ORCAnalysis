@@ -1,9 +1,9 @@
-#ifndef Protium_NullPointerException_hh_
-#define Protium_NullPointerException_hh_
+#ifndef ORCA_NullPointerException_hh_
+#define ORCA_NullPointerException_hh_
 
 #include <stdexcept>
 
-namespace Protium{
+namespace ORCA{
 	namespace SmartPointer{
 	    struct NullPointerException : public std::runtime_error{
 	        NullPointerException() : std::runtime_error(std::string(""))

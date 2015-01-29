@@ -1,7 +1,7 @@
-#ifndef Protium_Endian_hh
-#define Protium_Endian_hh
+#ifndef ORCA_Endian_hh
+#define ORCA_Endian_hh
 
-namespace Protium{
+namespace ORCA{
 
 	namespace Utilities{
 

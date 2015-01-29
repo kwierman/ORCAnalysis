@@ -1,13 +1,13 @@
-#ifndef Protium_PhysicalValue_h_
-#define Protium_PhysicalValue_h_
+#ifndef ORCA_PhysicalValue_h_
+#define ORCA_PhysicalValue_h_
 
-#include "Protium/Allocation/SmallObject"
+#include "ORCA/Allocation/SmallObject"
 
-namespace Protium{
+namespace ORCA{
 	namespace PhysicalValues{
 		//THIS IS TO BE USED FOR NON COVARIANT VARIABLES
 		template<typename T>
-		class VariantVariable : public Protium::Allocation::DefaultSmallObject {
+		class VariantVariable : public ORCA::Allocation::DefaultSmallObject {
 			T fValue;
 			T fError;
 		public:
@@ -126,4 +126,4 @@ namespace Protium{
 	}
 }
 
-#endif //Protium_PhysicalValue_h_
+#endif //ORCA_PhysicalValue_h_

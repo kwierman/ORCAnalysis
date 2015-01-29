@@ -1,5 +1,5 @@
-#ifndef Deuterium_Python_Method_hh
-#define Deuterium_Python_Method_hh
+#ifndef ORCA_Python_Method_hh
+#define ORCA_Python_Method_hh
 
 #include <Python.h>
 

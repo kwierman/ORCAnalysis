@@ -1,10 +1,10 @@
-#ifndef Protium_Clock_hh_
-#define Protium_Clock_hh_
+#ifndef ORCA_Clock_hh_
+#define ORCA_Clock_hh_
 
 #include <time.h>       /* clock_t, clock, CLOCKS_PER_SEC */
 #include <vector>
 
-namespace Protium{
+namespace ORCA{
 	namespace Time{
 
 		/**

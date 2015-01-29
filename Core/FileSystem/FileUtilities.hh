@@ -1,9 +1,9 @@
-#ifndef Deuterium_FileUtilities_h_
-#define Deuterium_FileUtilities_h_
+#ifndef ORCA_FileUtilities_h_
+#define ORCA_FileUtilities_h_
 
 #include <string>
 
-namespace Deuterium{
+namespace ORCA{
 
 	namespace FileSystem{
 

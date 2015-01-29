@@ -3,10 +3,10 @@ file(GLOB module_sources *.cc)
 file(GLOB module_headers *.hh)
 
 #Make the library
-add_library(ProtiumThreads SHARED ${module_sources} ${module_headers})
-target_link_libraries(ProtiumThreads ProtiumDesign)
-install(TARGETS ProtiumThreads DESTINATION lib EXPORT ProtiumConfig)
+add_library(ORCAThreads SHARED ${module_sources} ${module_headers})
+target_link_libraries(ORCAThreads ORCADesign)
+install(TARGETS ORCAThreads DESTINATION lib EXPORT ORCAConfig)
 
 #Install Headers
-install(FILES ${module_headers} DESTINATION include/Protium/Threads)
+install(FILES ${module_headers} DESTINATION include/ORCA/Threads)
 

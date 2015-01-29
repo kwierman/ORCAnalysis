@@ -1,9 +1,9 @@
-#ifndef Deuterium_FileSystem_StlWrappers_hh_
-#define Deuterium_FileSystem_StlWrappers_hh_
+#ifndef ORCA_FileSystem_StlWrappers_hh_
+#define ORCA_FileSystem_StlWrappers_hh_
 
 #include <fstream>
 
-namespace Deuterium{
+namespace ORCA{
 	namespace FileSystem{
 
 
