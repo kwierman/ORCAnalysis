@@ -1,12 +1,12 @@
-#ifndef Protium_Allocation_hh_
-#define Protium_Allocation_hh_
+#ifndef ORCA_Allocation_hh_
+#define ORCA_Allocation_hh_
 
-#include "Protium/Allocation/SmallObject.hh"
-#include "Protium/Allocation/STLAdapter.hh"
+#include "ORCA/Allocation/SmallObject.hh"
+#include "ORCA/Allocation/STLAdapter.hh"
 
 namespace Protium{
 
-	//! Small object allocation module.
+	//! Paged Allocation module.
 	namespace Allocation {}
 }
 

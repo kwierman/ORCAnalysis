@@ -1,5 +1,5 @@
-#include "Protium/Allocation/SmallObjectAllocator.hh"
-#include "Protium//Allocation/FixedAllocator.hh"
+#include "ORCA/Allocation/SmallObjectAllocator.hh"
+#include "ORCA/Allocation/PageAllocator.hh"
 
 inline std::size_t GetOffset( std::size_t numBytes, std::size_t alignment ){
     return ( numBytes + alignment-1 ) / alignment;
@@ -13,7 +13,7 @@ void DefaultDeallocator( void * p ){
     ::operator delete( p );
 }
 
-Protium::Allocation::SmallObjectAllocatorImplementation::SmallObjectAllocatorImplementation( std::size_t pageSize,
+ORCA::Allocation::SmallObjectAllocatorImplementation::SmallObjectAllocatorImplementation( std::size_t pageSize,
     std::size_t maxObjectSize, std::size_t objectAlignSize ) :
     fPool( NULL ),
     fMaxObjectSize( maxObjectSize ),
@@ -21,16 +21,16 @@ Protium::Allocation::SmallObjectAllocatorImplementation::SmallObjectAllocatorImp
 
     assert( 0 != objectAlignSize );
     const std::size_t allocCount = GetOffset( maxObjectSize, objectAlignSize );
-    fPool = new FixedAllocator[ allocCount ];
+    fPool = new PageAllocator[ allocCount ];
     for ( std::size_t i = 0; i < allocCount; ++i )
         fPool[ i ].Initialize( ( i+1 ) * objectAlignSize, pageSize );
 }
 
-Protium::Allocation::SmallObjectAllocatorImplementation::~SmallObjectAllocatorImplementation(){
+ORCA::Allocation::SmallObjectAllocatorImplementation::~SmallObjectAllocatorImplementation(){
     delete [] fPool;
 }
 
-bool Protium::Allocation::SmallObjectAllocatorImplementation::TrimExcessMemory( void ){
+bool ORCA::Allocation::SmallObjectAllocatorImplementation::TrimExcessMemory( void ){
     bool found = false;
     const std::size_t allocCount = GetOffset( GetMaxObjectSize(), GetAlignment() );
     std::size_t i = 0;
@@ -41,7 +41,7 @@ bool Protium::Allocation::SmallObjectAllocatorImplementation::TrimExcessMemory( 
     return found;
 }
 
-void* Protium::Allocation::SmallObjectAllocatorImplementation::Allocate( std::size_t numBytes, bool doThrow ){
+void* ORCA::Allocation::SmallObjectAllocatorImplementation::Allocate( std::size_t numBytes, bool doThrow ){
     if ( numBytes > GetMaxObjectSize() )
         return DefaultAllocator( numBytes, doThrow );
 
@@ -52,7 +52,7 @@ void* Protium::Allocation::SmallObjectAllocatorImplementation::Allocate( std::si
     (void) allocCount;
     assert( allocCount > index  );
 
-    FixedAllocator& allocator = fPool[ index ];
+    PageAllocator& allocator = fPool[ index ];
     assert( allocator.BlockSize() >= numBytes );
     assert( allocator.BlockSize() < numBytes + GetAlignment() );
     void* place = allocator.Allocate();
@@ -65,7 +65,7 @@ void* Protium::Allocation::SmallObjectAllocatorImplementation::Allocate( std::si
     return place;
 }
 
-void Protium::Allocation::SmallObjectAllocatorImplementation::Deallocate( void * p, std::size_t numBytes ){
+void ORCA::Allocation::SmallObjectAllocatorImplementation::Deallocate( void * p, std::size_t numBytes ){
     if ( p == NULL ) return;
     if ( numBytes > GetMaxObjectSize() ){
         DefaultDeallocator( p );
@@ -78,7 +78,7 @@ void Protium::Allocation::SmallObjectAllocatorImplementation::Deallocate( void *
     const std::size_t allocCount = GetOffset( GetMaxObjectSize(), GetAlignment() );
     (void) allocCount;
     assert( index < allocCount );
-    FixedAllocator & allocator = fPool[ index ];
+    PageAllocator & allocator = fPool[ index ];
     assert( allocator.BlockSize() >= numBytes );
     assert( allocator.BlockSize() < numBytes + GetAlignment() );
     const bool found = allocator.Deallocate( p, NULL );
@@ -86,12 +86,12 @@ void Protium::Allocation::SmallObjectAllocatorImplementation::Deallocate( void *
     assert( found );
 }
 
-void Protium::Allocation::SmallObjectAllocatorImplementation::Deallocate( void * p ){
+void ORCA::Allocation::SmallObjectAllocatorImplementation::Deallocate( void * p ){
     if ( p == NULL ) return;
     assert(  fPool != NULL );
     const std::size_t allocCount = GetOffset( GetMaxObjectSize(), GetAlignment() );
     Chunk * chunk = NULL;
-    FixedAllocator * pAllocator = NULL;
+    PageAllocator * pAllocator = NULL;
 
     for ( std::size_t ii = 0; ii < allocCount; ++ii ) {
         chunk = fPool[ ii ].HasBlock( p );
@@ -112,7 +112,7 @@ void Protium::Allocation::SmallObjectAllocatorImplementation::Deallocate( void *
 }
 
 
-bool Protium::Allocation::SmallObjectAllocatorImplementation::IsCorrupt( void ) const{
+bool ORCA::Allocation::SmallObjectAllocatorImplementation::IsCorrupt( void ) const{
     if ( fPool == NULL ){
         assert( false );
         return true;

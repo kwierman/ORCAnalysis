@@ -1,9 +1,9 @@
-#include "Protium/Allocation/Chunk.hh"
+#include "ORCA/Allocation/Page.hh"
 
 #include <assert.h>
 #include <bitset>
 
-bool Protium::Allocation::Chunk::Init( std::size_t blockSize, unsigned char blocks ){
+bool ORCA::Allocation::Page::Init( std::size_t blockSize, unsigned char blocks ){
     assert(blockSize > 0 && blocks > 0 );
     const std::size_t totalSize= blockSize*blocks;
     assert( totalSize / blockSize == blocks);
@@ -12,7 +12,7 @@ bool Protium::Allocation::Chunk::Init( std::size_t blockSize, unsigned char bloc
     return true;
 }
 
-void Protium::Allocation::Chunk::Reset(std::size_t blockSize, unsigned char blocks){
+void ORCA::Allocation::Page::Reset(std::size_t blockSize, unsigned char blocks){
     assert(blockSize > 0 && blocks > 0);
     fFirstAvailable = 0;
     fNAvail = blocks;
@@ -21,13 +21,13 @@ void Protium::Allocation::Chunk::Reset(std::size_t blockSize, unsigned char bloc
         *p = ++i;
 }
 
-void Protium::Allocation::Chunk::Release(){
+void ORCA::Allocation::Page::Release(){
     assert( fData != NULL );
     ::operator delete ( fData );
 }
 
 
-void* Protium::Allocation::Chunk::Allocate(std::size_t blockSize){
+void* ORCA::Allocation::Page::Allocate(std::size_t blockSize){
     if ( IsFilled() ) return NULL;
 
     assert((fFirstAvailable * blockSize) / blockSize == fFirstAvailable);
@@ -40,7 +40,7 @@ void* Protium::Allocation::Chunk::Allocate(std::size_t blockSize){
 }
 
 
-void Protium::Allocation::Chunk::Deallocate(void* p, std::size_t blockSize){
+void ORCA::Allocation::Page::Deallocate(void* p, std::size_t blockSize){
     assert(p >= fData);
 
     unsigned char* toRelease = static_cast<unsigned char*>(p);
@@ -58,12 +58,12 @@ void Protium::Allocation::Chunk::Deallocate(void* p, std::size_t blockSize){
     ++fNAvail;
 }
 
-bool Protium::Allocation::Chunk::IsCorrupt( unsigned char numBlocks, std::size_t blockSize, bool checkIndexes ) const{
+bool ORCA::Allocation::Page::IsCorrupt( unsigned char numBlocks, std::size_t blockSize, bool checkIndexes ) const{
 
     if ( numBlocks < fNAvail )
     {
-        // Contents at this Chunk corrupted.  This might mean something has
-        // overwritten memory owned by the Chunks container.
+        // Contents at this Page corrupted.  This might mean something has
+        // overwritten memory owned by the Pages container.
         assert( false );
         return true;
     }
@@ -73,8 +73,8 @@ bool Protium::Allocation::Chunk::IsCorrupt( unsigned char numBlocks, std::size_t
     unsigned char index = fFirstAvailable;
     if ( numBlocks <= index )
     {
-        // Contents at this Chunk corrupted.  This might mean something has
-        // overwritten memory owned by the Chunks container.
+        // Contents at this Page corrupted.  This might mean something has
+        // overwritten memory owned by the Pages container.
         assert( false );
         return true;
     }
@@ -94,7 +94,7 @@ bool Protium::Allocation::Chunk::IsCorrupt( unsigned char numBlocks, std::size_t
      list should have exactly fNAvail nodes, so the for loop will not
      check more than fNAvail.  This loop can't check inside allocated
      blocks for corruption since such blocks are not within the linked-list.
-     Contents of allocated blocks are not changed by Chunk.
+     Contents of allocated blocks are not changed by Page.
 
      Here are the types of corrupted link-lists which can be verified.  The
      corrupt index is shown with asterisks in each example.
@@ -105,7 +105,7 @@ bool Protium::Allocation::Chunk::IsCorrupt( unsigned char numBlocks, std::size_t
       fFirstAvailable -> 17 -> 29 -> *101*
       There should be no indexes which are equal to or larger than the total
       number of blocks.  Such an index would refer to a block beyond the
-      Chunk's allocated domain.
+      Page's allocated domain.
 
      Type 2: Index is repeated.
       numBlocks == 64
@@ -155,9 +155,9 @@ bool Protium::Allocation::Chunk::IsCorrupt( unsigned char numBlocks, std::size_t
     return false;
 }
 
-// Chunk::IsBlockAvailable ----------------------------------------------------
+// Page::IsBlockAvailable ----------------------------------------------------
 
-bool Protium::Allocation::Chunk::IsBlockAvailable( void * p, unsigned char numBlocks,
+bool ORCA::Allocation::Page::IsBlockAvailable( void * p, unsigned char numBlocks,
     std::size_t blockSize ) const
 {
     (void) numBlocks;

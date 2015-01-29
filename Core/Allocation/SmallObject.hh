@@ -1,13 +1,13 @@
 
-#ifndef Protium_SmallObject_hh_
-#define Protium_SmallObject_hh_
+#ifndef ORCA_SmallObject_hh_
+#define ORCA_SmallObject_hh_
 
-#include "Protium/Allocation/SmallObjectAllocator.hh"
-#include "Protium/Singleton/DeletionPolicies.hh"
-#include "Protium/Threads/ThreadingPolicy.hh"
+#include "ORCA/Allocation/SmallObjectAllocator.hh"
+#include "ORCA/Singleton/DeletionPolicies.hh"
+#include "ORCA/Threads/ThreadingPolicy.hh"
 
 
-namespace Protium{
+namespace ORCA{
 
     namespace Allocation{
 
@@ -32,7 +32,7 @@ namespace Protium{
         class SmallObjectBase{
         public:
             //! Type of allocator to host the allocator singleton
-            typedef Protium::Allocation::SmallObjectAllocator< ThreadPolicy, chunkSize,
+            typedef ORCA::Allocation::SmallObjectAllocator< ThreadPolicy, chunkSize,
                 maxSmallObjectSize, objectAlignSize, LifetimePolicy > ObjAllocator;
         
         private:
@@ -122,12 +122,12 @@ namespace Protium{
         */
         template
         <
-            template <class, class> class ThreadingModel = Protium::Threads::InSingleThread,
+            template <class, class> class ThreadingModel = ORCA::Threads::InSingleThread,
             std::size_t chunkSize = 4096,
             std::size_t maxSmallObjectSize = 256,
             std::size_t objectAlignSize = 4,
-            template <class> class LifetimePolicy = Protium::Singleton::DeleteNever,
-            class MutexPolicy =  Protium::Threads::Mutex
+            template <class> class LifetimePolicy = ORCA::Singleton::DeleteNever,
+            class MutexPolicy =  ORCA::Threads::Mutex
         >
         class SmallObject : public SmallObjectBase< ThreadingModel, chunkSize,
                 maxSmallObjectSize, objectAlignSize, LifetimePolicy, MutexPolicy >
@@ -150,12 +150,12 @@ namespace Protium{
 
             Base class for small objects less than 256 bytes in size. If object is a valueobject, use SmallValueObject instead.
         */
-        template< template <class, class> class ThreadingModel = Protium::Threads::InSingleThread,
+        template< template <class, class> class ThreadingModel = ORCA::Threads::InSingleThread,
             std::size_t chunkSize = 4096,
             std::size_t maxSmallObjectSize = 256,
             std::size_t objectAlignSize = 4,
-            template <class> class LifetimePolicy = Protium::Singleton::DeleteNever,
-            class MutexPolicy = Protium::Threads::Mutex >
+            template <class> class LifetimePolicy = ORCA::Singleton::DeleteNever,
+            class MutexPolicy = ORCA::Threads::Mutex >
         class SmallValueObject : public SmallObjectBase< ThreadingModel, chunkSize,
                 maxSmallObjectSize, objectAlignSize, LifetimePolicy, MutexPolicy >
         {
@@ -177,6 +177,6 @@ namespace Protium{
     }
 }
 
-#include "Protium/Allocation/STLAdapter.hh"
+//#include "ORCA/Allocation/STLAdapter.hh"
 
-#endif //Protium_SmallObject_h_
+#endif //ORCA_SmallObject_h_

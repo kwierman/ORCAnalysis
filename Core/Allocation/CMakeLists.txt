@@ -3,11 +3,11 @@ file(GLOB module_sources *.cc)
 file(GLOB module_headers *.hh)
 
 #Make the library
-add_library(ProtiumAllocation SHARED ${module_sources} ${module_headers})
-target_link_libraries(ProtiumAllocation ProtiumDesign ProtiumThreads ProtiumSingleton ProtiumUtilities)
-set_target_properties(ProtiumAllocation PROPERTIES LINKER_LANGUAGE CXX)
-install(TARGETS ProtiumAllocation DESTINATION lib EXPORT ProtiumConfig)
+add_library(ORCAAllocation SHARED ${module_sources} ${module_headers})
+target_link_libraries(ORCAAllocation ORCADesign ORCAThreads ORCASingleton ORCAUtilities)
+set_target_properties(ORCAAllocation PROPERTIES LINKER_LANGUAGE CXX)
+install(TARGETS ORCAAllocation DESTINATION lib EXPORT ORCAConfig)
 
 #Install Headers
-install(FILES ${module_headers} DESTINATION include/Protium/Allocation)
+install(FILES ${module_headers} DESTINATION include/ORCA/Allocation)
 

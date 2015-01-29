@@ -1,10 +1,10 @@
-#ifndef Protium_STLAdapter_hh_
-#define Protium_STLAdapter_hh_
+#ifndef ORCA_STLAdapter_hh_
+#define ORCA_STLAdapter_hh_
 
-#include "Protium/Allocation/SmallObjectAllocator.hh"
+#include "ORCA/Allocation/SmallObjectAllocator.hh"
 
 
-namespace Protium{
+namespace ORCA{
     namespace Allocation{
 
         //! Allocator to be used by STL containers

@@ -1,24 +1,24 @@
-#ifndef Protium_SmallObjectAllocator_hh_
-#define Protium_SmallObjectAllocator_hh_
+#ifndef ORCA_SmallObjectAllocator_hh_
+#define ORCA_SmallObjectAllocator_hh_
 
-#include "Protium/Threads/ThreadingPolicy.hh"
-#include "Protium/Threads/Mutex.hh"
-#include "Protium/Singleton/DeletionPolicies.hh"
-#include "Protium/Singleton/CreationPolicies.hh"
-#include "Protium/Singleton/Singleton.hh"
+#include "ORCA/Threads/ThreadingPolicy.hh"
+#include "ORCA/Threads/Mutex.hh"
+#include "ORCA/Singleton/DeletionPolicies.hh"
+#include "ORCA/Singleton/CreationPolicies.hh"
+#include "ORCA/Singleton/Singleton.hh"
 
 #include <cstddef>
 
-namespace Protium{
+namespace ORCA{
 
 	namespace Allocation{
 
-        class FixedAllocator;
+        class PageAllocator;
 
 		//! Manages a pool of fixed allocators
 	    class SmallObjectAllocatorImplementation{
 	    private:
-	    	Protium::Allocation::FixedAllocator* fPool;
+	    	ORCA::Allocation::PageAllocator* fPool;
         	const std::size_t fMaxObjectSize;
         	const std::size_t fAlignSize;
     	protected:
@@ -39,12 +39,12 @@ namespace Protium{
     };
 
     //! Singleton small object allocator
-    template < template <class, class> class ThreadingModel = Protium::Threads::InSingleThread,
+    template < template <class, class> class ThreadingModel = ORCA::Threads::InSingleThread,
         std::size_t chunkSize = 4096,
         std::size_t maxSmallObjectSize = 256,
         std::size_t objectAlignSize = 4,
-        template <class> class LifetimePolicy = Protium::Singleton::DeleteNever,
-        class MutexPolicy = Protium::Threads::Mutex
+        template <class> class LifetimePolicy = ORCA::Singleton::DeleteNever,
+        class MutexPolicy = ORCA::Threads::Mutex
     >
     class SmallObjectAllocator : public SmallObjectAllocatorImplementation {
     public:
@@ -52,7 +52,7 @@ namespace Protium{
         typedef SmallObjectAllocator< ThreadingModel, chunkSize, maxSmallObjectSize, objectAlignSize, LifetimePolicy > AllocatorModel;
         typedef ThreadingModel< AllocatorModel, MutexPolicy > ThreadModel;
 
-        typedef Protium::Singleton::Singleton< AllocatorModel, Protium::Singleton::CreateStatic,
+        typedef ORCA::Singleton::Singleton< AllocatorModel, ORCA::Singleton::CreateStatic,
             LifetimePolicy, ThreadingModel > AllocatorSingleton;
 
         inline static SmallObjectAllocator & Instance( void )

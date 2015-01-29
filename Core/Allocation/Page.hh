@@ -1,19 +1,19 @@
-/*! \file Chunk.h
+/*! \file Page.h
 	\author kwierman
  */
 
-#ifndef Protium_Chunk_hh_
-#define Protium_Chunk_hh_
+#ifndef ORCA_Page_hh_
+#define ORCA_Page_hh_
 
 #include <cstddef>
 
-namespace Protium{
+namespace ORCA{
 
 	namespace Allocation{
 
 		//! Represents a fixed number of blocks 
 
-		class Chunk{
+		class Page{
 
 			/**Data **/
         	unsigned char* fData;
@@ -26,11 +26,11 @@ namespace Protium{
 
 	        //! Since all members are private, only FixedAllocator can access them.
 			friend class FixedAllocator;
-			//! Each time a new chunk is created, it must be initialized (or when reused in a pool)
-			//! \param size the size per chunk
+			//! Each time a new Page is created, it must be initialized (or when reused in a pool)
+			//! \param size the size per Page
 			//! \param n the number of blocks
         	bool Init( std::size_t size, unsigned char n );
-        	//! Each time a chunk is reused, it needs to be reset
+        	//! Each time a Page is reused, it needs to be reset
 	        void Reset( std::size_t blockSize, unsigned char blocks );
 	        //! Deallocates all blocks in chunck
 	        void Release();
@@ -38,7 +38,7 @@ namespace Protium{
         	void* Allocate( std::size_t blocks );
         	//! DeAllocates a number of blocks starting at pointer
 	        void Deallocate( void * p, std::size_t blocks );
-	        /*! Determines whether this chunk is corrupt
+	        /*! Determines whether this Page is corrupt
 	        	The following conditions imply corruption:
 
 	        	- Number of available blocks exceeds the number of blocks contained
@@ -50,12 +50,12 @@ namespace Protium{
 	        bool IsCorrupt( unsigned char numBlocks, std::size_t blockSize, bool checkIndexes ) const;
 	        //! Checks the block starting at p and for p+numBlocks*blockSize checks to see if they're used
 	        bool IsBlockAvailable( void* p, unsigned char numBlocks, std::size_t blockSize ) const;
-	        //! Checks if this block belongs to this chunk
-	        inline bool HasBlock( void* p, std::size_t chunkLength ) const {
+	        //! Checks if this block belongs to this Page
+	        inline bool HasBlock( void* p, std::size_t PageLength ) const {
 	            unsigned char * pc = static_cast< unsigned char * >( p );
-	            return ( fData <= pc ) && ( pc < fData + chunkLength );
+	            return ( fData <= pc ) && ( pc < fData + PageLength );
 	        }
-	        //! Checks to see if this number of blocks is available in this chunk
+	        //! Checks to see if this number of blocks is available in this Page
 	        inline bool HasAvailable( unsigned char numBlocks ) const {
 	        	return ( fNAvail == numBlocks ); 
 	        }
@@ -63,9 +63,9 @@ namespace Protium{
 	        inline bool IsFilled( void ) const { 
 	        	return ( 0 == fNAvail ); 
 	        }
-		};//end Chunk class
+		};//end Page class
 	}//End Allocation Namespace
-}//End Protium Namespace
+}//End ORCA Namespace
 
 
 
