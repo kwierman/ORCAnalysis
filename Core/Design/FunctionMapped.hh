@@ -1,5 +1,5 @@
-#ifndef Protium_FunctionMapped_hh_
-#define Protium_FunctionMapped_hh_
+#ifndef ORCA_Design_FunctionMapped_hh_
+#define ORCA_Design_FunctionMapped_hh_
 
 #include <map>
 #include <string>
@@ -30,7 +30,7 @@
 	~~~~~~~~
 **/
 
-namespace Protium{
+namespace ORCA{
 	namespace Design{
 		//! Prototype class to be used with CRTP. Don't use.
 		class FunctionMappedPrototype{

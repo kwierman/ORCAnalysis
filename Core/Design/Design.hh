@@ -1,19 +1,19 @@
-#ifndef Protium_Design_hh_
-#define Protium_Design_hh_
+#ifndef ORCA_Design_hh_
+#define ORCA_Design_hh_
 
-#include "Protium/Design/Assert.hh"
-#include "Protium/Design/Dimensions.hh"
-#include "Protium/Design/Quantities.hh"
-#include "Protium/Design/RefToValue.hh"
-#include "Protium/Design/Types.hh"
+#include "ORCA/Design/Assert.hh"
+#include "ORCA/Design/Dimensions.hh"
+#include "ORCA/Design/Quantities.hh"
+#include "ORCA/Design/RefToValue.hh"
+#include "ORCA/Design/Types.hh"
 
 
 // Use this to control whether or not
-#ifndef PROTIUM_DEBUG
-#  define PROTIUM_DEBUG
-#endif //PROTIUM_DEBUG
+#ifndef ORCA_DEBUG
+#  define ORCA_DEBUG 1
+#endif //ORCA_DEBUG
 
-namespace Protium{
+namespace ORCA{
 
 	//! Encapsulates design patterns and policies
 	namespace Design{}

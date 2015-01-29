@@ -1,8 +1,8 @@
-#ifndef Protium_Quantities_hh_
-#define Protium_Quantities_hh_ 
+#ifndef ORCA_Quantities_hh_
+#define ORCA_Quantities_hh_ 
 
-#include "Protium/Design/Assert.hh"
-#include "Protium/Design/Dimensions.hh"
+#include "ORCA/Design/Assert.hh"
+#include "ORCA/Design/Dimensions.hh"
 
 /**
 	\file Quantities.hh
@@ -14,23 +14,23 @@
 	If you want to define a dimensionful quantitity, you can use:
 
 	~~~~~~~~
-		Protium::Design::Energy myEnergy;
+		ORCA::Design::Energy myEnergy;
 	~~~~~~~~
 
 	If you want to like dimensions:
 
 	~~~~~~~~
-		Protium::Design::Rate myRate1 = Protium::Design::Rate(5.0);
-		Protium::Design::Rate myRate2; //initializes to 0.0
-		Protium::Design::Rate myRate3;				
+		ORCA::Design::Rate myRate1 = ORCA::Design::Rate(5.0);
+		ORCA::Design::Rate myRate2; //initializes to 0.0
+		ORCA::Design::Rate myRate3;				
 	    myRate1 = myRate2+myRate3;
 	~~~~~~~~
 
 	This works. However, adding non-like dimensions as such:
 
 	~~~~~~~~
-		Protium::Design::Rate myRate;
-		Protium::Design::Time myTime;
+		ORCA::Design::Rate myRate;
+		ORCA::Design::Time myTime;
 		myRate+myTime		
 	~~~~~~~~
 
@@ -43,16 +43,16 @@
 	Similarly, you can create  and assign instances of other types using multiplication and addition:
 
 	~~~~~~~~
-	Protium::Design::Time time;
-	Protium::Design::Rate rate;
-	Protium::Design::Scalar scalar = time*rate;
+	ORCA::Design::Time time;
+	ORCA::Design::Rate rate;
+	ORCA::Design::Scalar scalar = time*rate;
 	~~~~~~~~
 
 	The will cause a compiler error if the Quantities don't have equal dimensions.
 
 **/
 
-namespace Protium{
+namespace ORCA{
 
 	namespace Design{
 
@@ -65,7 +65,7 @@ namespace Protium{
 
 		    template<class OtherDimensions>
 		    Quantity(const OtherDimensions& rhs ) :fValue(rhs.Value()){
-					PROTIUM_STATIC_ASSERT( (SameType< Dimensions , OtherDimensions >::value),
+					ORCA_STATIC_ASSERT( (SameType< Dimensions , OtherDimensions >::value),
 											ERROR_QUANTITIES_NOT_EQUAL_DIMENSIONS() );
 		    }
 
@@ -108,7 +108,7 @@ namespace Protium{
 	}
 
 	//everything in double, since that's the limit that we're calculating to
-#ifdef PROTIUM_DEBUG
+#ifdef ORCA_DEBUG
 	typedef Design::Quantity<double, Design::scalar> Scalar;
 	typedef Design::Quantity<double, Design::mass> Mass;
 	typedef Design::Quantity<double, Design::length> Length;
@@ -147,4 +147,4 @@ namespace Protium{
 #endif
 }
 
-#endif //Protium_Quantities_h_
+#endif //ORCA_Quantities_h_

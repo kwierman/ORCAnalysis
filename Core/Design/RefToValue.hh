@@ -1,7 +1,7 @@
-#ifndef RefToValue_hh_
-#define RefToValue_hh_
+#ifndef ORCA_RefToValue_hh_
+#define ORCA_RefToValue_hh_
 
-namespace Protium{
+namespace ORCA{
 
 
     namespace Design{

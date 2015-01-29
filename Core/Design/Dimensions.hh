@@ -1,7 +1,7 @@
-#ifndef Protium_Dimensions_hh
-#define Protium_Dimensions_hh
+#ifndef ORCA_Design_Dimensions_hh
+#define ORCA_Design_Dimensions_hh
 
-#include "Protium/Design/Types.hh"
+#include "ORCA/Design/Types.hh"
 
 /**
 	\file Dimensions.hh
@@ -13,7 +13,7 @@
 	If you want to define a dimensionful quantitity, you can use:
 
 	~~~~~~~~
-		Protium::Design::rate myRate;
+		ORCA::Design::rate myRate;
 	~~~~~~~~
 
 	This now produces a unique type-sequence for this set of dimensions.
@@ -45,7 +45,7 @@
 
 **/
 
-namespace Protium{
+namespace ORCA{
 	namespace Design{
 		
 		//! Helper template to add dimensions on quantities
@@ -107,4 +107,4 @@ namespace Protium{
 	}
 }
 
-#endif //Protium_Dimensions_h
+#endif //ORCA_Dimensions_h

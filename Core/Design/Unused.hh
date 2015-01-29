@@ -1,6 +1,6 @@
-#ifndef Protium_Unused_hh_
-#define Protium_Unused_hh_
+#ifndef ORCA_Unused_hh_
+#define ORCA_Unused_hh_
 
-#define Protium_Unused(x) (void)x;
+#define ORCA_Unused(x) (void)x;
 
 #endif

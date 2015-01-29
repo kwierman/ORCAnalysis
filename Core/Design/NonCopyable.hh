@@ -1,7 +1,7 @@
-#ifndef Protium_NonCopyable_hh_
-#define Protium_NonCopyable_hh_
+#ifndef ORCA_NonCopyable_hh_
+#define ORCA_NonCopyable_hh_
 
-namespace Protium{
+namespace ORCA{
 	namespace Design{
 
 		class NonCopyable {

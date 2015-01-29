@@ -1,5 +1,5 @@
-#ifndef Protium_Constructable_h_
-#define Protium_Constructable_h_
+#ifndef ORCA_Constructable_h_
+#define ORCA_Constructable_h_
 
 #include <map>
 #include <string>
@@ -17,7 +17,7 @@
 	
 	~~~~~~~~
 	namespace MyNamespace{
-		class MyClass : ConstructablePrototype{
+		class MyClass : ORCA::Design::ConstructablePrototype{
 		    REGISTER_DECLARE_TYPE(MyClass, MyGroup);
 		}
 	}
@@ -37,7 +37,7 @@
 
 **/
 
-namespace Protium{
+namespace ORCA{
 	namespace Design{
 
 		//! Prototype class to be used as a base class for constructible classes
@@ -85,10 +85,10 @@ namespace Protium{
 
 //! Declares a register for a given constructible class
 #define REGISTER_DEC_TYPE(NAME, GROUP) \
-    static Protium::Design::DerivedRegister<NAME, GROUP> reg;
+    static ORCA::Design::DerivedRegister<NAME, GROUP> reg;
 
 //! Defines a register for a given constructible class
 #define REGISTER_DEF_TYPE(NAME, GROUP) \
-    Protium::Design::DerivedRegister<NAME, GROUP> NAME::reg(#NAME);
+    ORCA::Design::DerivedRegister<NAME, GROUP> NAME::reg(#NAME);
 
 #endif //File Guardian
